@@ -1,0 +1,687 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>杨竺瑜｜产品经理作品集</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --bg: #f6f2eb;
+        --bg-soft: #fbf8f3;
+        --card: rgba(255, 255, 255, 0.88);
+        --card-solid: #fffdfa;
+        --line: rgba(94, 102, 113, 0.12);
+        --line-strong: rgba(94, 102, 113, 0.18);
+        --text: #1e232b;
+        --muted: #6b7280;
+        --subtle: #8c93a1;
+        --accent: #5d6d83;
+        --accent-deep: #243243;
+        --accent-soft: #edf1f5;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top, rgba(113, 126, 146, 0.12), transparent 28%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.3), transparent 24%),
+          var(--bg);
+        font-family:
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC",
+          "Source Han Sans SC", sans-serif;
+      }
+
+      .serif-title {
+        font-family:
+          "Iowan Old Style", "Palatino Linotype", "Noto Serif SC", "Songti SC",
+          "Source Han Serif SC", serif;
+      }
+
+      .glass-nav {
+        background: rgba(248, 244, 237, 0.72);
+        backdrop-filter: blur(14px);
+        box-shadow: 0 8px 30px rgba(61, 69, 81, 0.04);
+      }
+
+      .hero-shell {
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 252, 247, 0.82)),
+          var(--card-solid);
+        box-shadow: 0 28px 70px rgba(88, 92, 102, 0.08);
+      }
+
+      .soft-card {
+        background: var(--card);
+        box-shadow: 0 18px 48px rgba(71, 72, 84, 0.05);
+      }
+
+      .quiet-card {
+        background: rgba(255, 255, 255, 0.78);
+      }
+
+      .thin-line {
+        border-color: var(--line);
+      }
+
+      .thin-line-strong {
+        border-color: var(--line-strong);
+      }
+
+      .system-preview {
+        background:
+          linear-gradient(180deg, rgba(247, 248, 250, 0.96), rgba(241, 244, 247, 0.88)),
+          #f8fafc;
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.9),
+          0 16px 34px rgba(75, 83, 95, 0.07);
+      }
+
+      .system-screen {
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: 0 16px 36px rgba(75, 83, 95, 0.08);
+      }
+
+      .preview-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
+        display: block;
+      }
+
+      .nav-link.active {
+        background: rgba(93, 109, 131, 0.09);
+        color: var(--accent);
+      }
+
+      .hero-cta {
+        transition:
+          transform 0.23s ease,
+          box-shadow 0.23s ease,
+          border-color 0.23s ease,
+          background-color 0.23s ease,
+          color 0.23s ease;
+      }
+
+      .hero-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 28px rgba(71, 72, 84, 0.08);
+      }
+
+      .hero-cta:active {
+        transform: translateY(1px);
+        box-shadow: 0 6px 14px rgba(71, 72, 84, 0.05);
+      }
+
+      .result-number {
+        color: var(--accent-deep);
+        letter-spacing: -0.03em;
+      }
+
+      .reveal-section {
+        opacity: 0;
+        transform: translateY(16px);
+        transition:
+          opacity 0.56s ease,
+          transform 0.56s ease;
+      }
+
+      .reveal-section.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .reveal-item {
+        opacity: 0;
+        transform: translateY(16px);
+        transition:
+          opacity 0.56s ease,
+          transform 0.56s ease;
+      }
+
+      .reveal-item.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .delay-1 {
+        transition-delay: 0.06s;
+      }
+
+      .delay-2 {
+        transition-delay: 0.12s;
+      }
+
+      .project-card {
+        transition:
+          transform 0.24s ease,
+          box-shadow 0.24s ease,
+          border-color 0.24s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 28px 56px rgba(71, 72, 84, 0.08);
+        border-color: rgba(94, 102, 113, 0.22);
+      }
+
+      .detail-button {
+        transition:
+          border-color 0.23s ease,
+          background-color 0.23s ease,
+          color 0.23s ease,
+          box-shadow 0.23s ease;
+      }
+
+      .detail-button:hover {
+        background: rgba(255, 255, 255, 0.96);
+        border-color: rgba(94, 102, 113, 0.28);
+        box-shadow: 0 10px 24px rgba(71, 72, 84, 0.05);
+      }
+
+      .project-main {
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: 1fr;
+      }
+
+      .project-left,
+      .project-right {
+        min-width: 0;
+      }
+
+      .project-left {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 1.25rem;
+      }
+
+      .project-left-top {
+        max-width: 28rem;
+      }
+
+      .project-left-bottom {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .project-metrics {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .project-action {
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 0.2rem;
+      }
+
+      .project-right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 0.75rem;
+      }
+
+      .project-preview-frame {
+        width: min(100%, 34rem);
+      }
+
+      .hero-main-grid {
+        display: grid;
+        gap: 1.25rem;
+      }
+
+      .hero-info-grid {
+        display: grid;
+        gap: 0.65rem;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      @media (min-width: 2800px) {
+        .hero-main-grid {
+          grid-template-columns: minmax(0, 1.1fr) minmax(330px, 0.9fr);
+          align-items: start;
+          gap: 1.5rem;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .project-main {
+          grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr);
+          align-items: start;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .project-metrics {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-info-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .project-right {
+          align-items: stretch;
+        }
+
+        .project-preview-frame {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="glass-nav sticky top-0 z-50 border-b border-black/5">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-8">
+        <a href="#home" class="serif-title text-base font-semibold tracking-[0.08em] text-[#1a1f27] sm:text-[1.05rem]">
+          PM Portfolio 2026
+        </a>
+
+        <nav class="hidden items-center gap-1.5 md:flex">
+          <a class="nav-link rounded-full px-4 py-2 text-sm text-[#59616f] transition hover:bg-white/70 hover:text-[#5d6d83]" href="#home">首页</a>
+          <a class="nav-link rounded-full px-4 py-2 text-sm text-[#59616f] transition hover:bg-white/70 hover:text-[#5d6d83]" href="#projects">实习经历</a>
+          <a class="nav-link rounded-full px-4 py-2 text-sm text-[#59616f] transition hover:bg-white/70 hover:text-[#5d6d83]" href="#about">个人背景</a>
+          <a class="nav-link rounded-full px-4 py-2 text-sm text-[#59616f] transition hover:bg-white/70 hover:text-[#5d6d83]" href="#contact">联系方式</a>
+        </nav>
+
+        <a
+          href="#contact"
+          class="rounded-full border thin-line bg-white/70 px-4 py-2 text-sm text-[#3d4652] transition hover:border-[#5d6d83] hover:text-[#5d6d83] md:hidden"
+        >
+          联系我
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="reveal-section mx-auto max-w-6xl px-6 pb-8 pt-14 lg:px-8 lg:pt-20">
+        <div class="hero-shell overflow-hidden rounded-[32px] border thin-line px-6 py-7 sm:px-8 sm:py-9 lg:px-10 lg:py-10">
+          <div class="hero-main-grid">
+            <div>
+              <p class="text-sm font-medium tracking-[0.18em] text-[#708096]">PORTFOLIO OVERVIEW</p>
+              <div class="mt-5 flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+                <div class="max-w-2xl">
+                  <h1 class="serif-title text-[2.2rem] font-semibold leading-[1.08] text-[#171c23] sm:text-[2.8rem]">
+                    杨竺瑜
+                  </h1>
+                  <p class="mt-5 text-lg font-medium leading-8 text-[#2a3038]">
+                    产品经理｜B端产品优先<br />
+                    ERP / CRM / 履约中后台方向
+                  </p>
+                  <p class="mt-7 max-w-[36rem] text-[15px] leading-8 text-[#4d5562]">
+                    聚焦 B 端产品方向，具备 CRM、履约中后台、ERP 场景的实习项目经验。擅长围绕业务流程梳理问题，完成页面方案、PRD 规则补充与项目协同推进。
+                  </p>
+                </div>
+
+                <div class="overflow-hidden rounded-[24px] border thin-line bg-[#ece8e0] md:mr-5 lg:mr-6 md:w-[168px] md:shrink-0">
+                  <img src="assets/images/home/photo.jpg" alt="杨竺瑜证件照" class="h-[220px] w-full object-cover object-center" />
+                </div>
+              </div>
+
+              <div class="mt-7 flex flex-wrap gap-3">
+                <span class="rounded-full border thin-line bg-white/80 px-4 py-2 text-sm text-[#3f4854]">B端产品</span>
+                <span class="rounded-full border thin-line bg-white/80 px-4 py-2 text-sm text-[#3f4854]">ERP / CRM</span>
+                <span class="rounded-full border thin-line bg-white/80 px-4 py-2 text-sm text-[#3f4854]">履约中后台</span>
+                <span class="rounded-full border thin-line bg-white/80 px-4 py-2 text-sm text-[#3f4854]">原型设计 / PRD</span>
+                <span class="rounded-full border thin-line bg-white/80 px-4 py-2 text-sm text-[#3f4854]">AI 协作提效</span>
+              </div>
+
+              <div class="mt-8 flex flex-wrap gap-4">
+                <a
+                  href="#projects"
+                  class="hero-cta inline-flex items-center rounded-full bg-[#243243] px-6 py-3 text-sm font-medium text-white hover:bg-[#33465c]"
+                >
+                  查看项目经历
+                </a>
+                <a
+                  href="#contact"
+                  class="hero-cta inline-flex items-center rounded-full border thin-line-strong bg-white/75 px-6 py-3 text-sm font-medium text-[#36404c] hover:border-[#5d6d83] hover:text-[#5d6d83]"
+                >
+                  联系我
+                </a>
+              </div>
+            </div>
+
+            <div class="hero-info-grid sm:grid-cols-2">
+              <div class="quiet-card rounded-[22px] border thin-line p-4">
+                <p class="text-xs tracking-[0.16em] text-[#7b8594]">学校</p>
+                <p class="mt-3 text-sm leading-6 text-[#303844]">南京信息工程大学（双一流）｜2026 应届毕业生</p>
+              </div>
+              <div class="quiet-card rounded-[22px] border thin-line p-4">
+                <p class="text-xs tracking-[0.16em] text-[#7b8594]">专业 / 时间</p>
+                <p class="mt-3 text-sm leading-6 text-[#303844]">数据科学与大数据技术</p>
+                <p class="mt-1 text-sm leading-6 text-[#303844]">2021.9 - 2026.6</p>
+              </div>
+              <div class="quiet-card rounded-[22px] border thin-line p-4">
+                <p class="text-xs tracking-[0.16em] text-[#7b8594]">校园经历</p>
+                <p class="mt-3 text-sm leading-6 text-[#303844]">2021-2024 学年校级一等奖奖学金</p>
+                <p class="mt-1 text-sm leading-6 text-[#303844]">院团委宣传策划部副部长</p>
+              </div>
+              <div class="quiet-card rounded-[22px] border thin-line p-4">
+                <p class="text-xs tracking-[0.16em] text-[#7b8594]">实习经历</p>
+                <div class="mt-3 space-y-2 text-sm leading-6 text-[#303844]">
+                  <p>赛维时代｜ERP 系统产品实习生｜2025.12 - 2026.03</p>
+                  <p>叮咚买菜｜履约中后台产品实习生｜2025.09 - 2025.11</p>
+                  <p>理想汽车｜CRM 系统产品实习生｜2025.06 - 2025.08</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="reveal-section mx-auto max-w-6xl px-6 py-20 lg:px-8">
+        <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p class="text-sm font-medium tracking-[0.18em] text-[#708096]">SELECTED PROJECTS</p>
+            <h2 class="serif-title mt-4 text-3xl font-semibold text-[#171c23] sm:text-[2.4rem]">实习经历</h2>
+          </div>
+          <p class="text-right text-xs font-light tracking-[0.18em] text-[#808896] sm:text-sm">
+            需求拆解 / 原型设计 / 页面方案 / 数据复盘
+          </p>
+        </div>
+
+        <div class="mt-10 space-y-6">
+          <article class="project-card soft-card rounded-[30px] border thin-line p-6">
+            <div class="project-main">
+              <div class="project-left">
+                <div class="project-left-top">
+                  <div class="flex flex-wrap items-start gap-4">
+                    <div>
+                      <p class="text-base font-semibold tracking-[0.02em] text-[#4e5b6b]">赛维时代</p>
+                      <h3 class="mt-2 text-[1.75rem] font-semibold leading-[1.22] text-[#171c23]">计划协同、补货预警与经营回流闭环迭代</h3>
+                      <p class="mt-3 text-[14px] font-medium leading-7 text-[#6a7481]">ERP 系统产品实习生｜2025.12 - 2026.03</p>
+                    </div>
+                  </div>
+                  <p class="mt-4 max-w-xl text-sm leading-7 text-[#5a6270]">跨境服饰供应链 ERP 版本迭代，围绕计划协同、补货预警、供应商承接与经营回流四个环节，完成中后台闭环方案设计。</p>
+                </div>
+                <div class="project-left-bottom">
+                  <div class="project-metrics">
+                    <div class="rounded-[22px] bg-[#fbf8f3] p-4">
+                      <p class="text-xs tracking-[0.16em] text-[#8590a0]">关键结果</p>
+                      <p class="result-number mt-3 text-[1.9rem] font-semibold">31%</p>
+                      <p class="mt-2 text-sm leading-6 text-[#2d3641]">高风险计划异常识别时效提升</p>
+                    </div>
+                    <div class="rounded-[22px] bg-[#fbf8f3] p-4">
+                      <p class="text-xs tracking-[0.16em] text-[#8590a0]">协同成果</p>
+                      <p class="result-number mt-3 text-[1.9rem] font-semibold">68%</p>
+                      <p class="mt-2 text-sm leading-6 text-[#2d3641]">补货建议采纳率</p>
+                    </div>
+                  </div>
+                  <div class="project-action pt-1">
+                    <a href="project-sewei.html" class="detail-button inline-flex items-center rounded-full border thin-line-strong bg-white/85 px-5 py-2.5 text-sm font-medium text-[#36404c]">查看详情</a>
+                  </div>
+                </div>
+              </div>
+              <div class="project-right">
+                <div class="project-preview-frame system-preview rounded-[26px] border thin-line p-4">
+                  <div class="system-screen rounded-[22px] border thin-line bg-white">
+                    <div class="flex justify-end px-4 pt-4">
+                      <div class="flex gap-1.5">
+                        <span class="h-2.5 w-2.5 rounded-full bg-[#d9dee5]"></span>
+                        <span class="h-2.5 w-2.5 rounded-full bg-[#d9dee5]"></span>
+                        <span class="h-2.5 w-2.5 rounded-full bg-[#a4b0bf]"></span>
+                      </div>
+                    </div>
+                    <div class="p-4 pt-3">
+                      <div class="aspect-[1440/1024] overflow-auto rounded-[20px] border border-[#e5eaf0] bg-[#eef2f6]">
+                        <img
+                          src="assets/images/projects/sewei/overview-home.png"
+                          alt="赛维时代 ERP 项目总览图"
+                          class="preview-image"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card soft-card rounded-[30px] border thin-line p-6">
+            <div class="project-main">
+              <div class="project-left">
+                <div class="project-left-top">
+                  <div class="flex flex-wrap items-start gap-4">
+                    <div>
+                      <p class="text-base font-semibold tracking-[0.02em] text-[#4e5b6b]">叮咚买菜</p>
+                      <h3 class="mt-2 text-[1.75rem] font-semibold leading-[1.22] text-[#171c23]">仓群调拨协同优化机制</h3>
+                      <p class="mt-3 text-[14px] font-medium leading-7 text-[#6a7481]">履约中后台产品实习生｜2025.09 - 2025.11</p>
+                    </div>
+                  </div>
+                  <p class="mt-4 max-w-xl text-sm leading-7 text-[#5a6270]">围绕风险识别、建议生成、快速发起与结果回流，补齐履约中后台调拨闭环。</p>
+                </div>
+                <div class="project-left-bottom">
+                  <div class="project-metrics">
+                    <div class="rounded-[22px] bg-[#fbf8f3] p-4">
+                      <p class="text-xs tracking-[0.16em] text-[#8590a0]">关键结果</p>
+                      <p class="result-number mt-3 text-[1.9rem] font-semibold">-28%</p>
+                      <p class="mt-2 text-sm leading-6 text-[#2d3641]">调拨发起时长降低</p>
+                    </div>
+                    <div class="rounded-[22px] bg-[#fbf8f3] p-4">
+                      <p class="text-xs tracking-[0.16em] text-[#8590a0]">协同效果</p>
+                      <p class="result-number mt-3 text-[1.9rem] font-semibold">64%</p>
+                      <p class="mt-2 text-sm leading-6 text-[#2d3641]">系统建议采纳率</p>
+                    </div>
+                  </div>
+                  <div class="project-action">
+                    <a href="project-dingdong.html" class="detail-button inline-flex items-center rounded-full border thin-line-strong bg-white/85 px-5 py-2.5 text-sm font-medium text-[#36404c]">查看详情</a>
+                  </div>
+                </div>
+              </div>
+              <div class="project-right">
+                <div class="project-preview-frame system-preview rounded-[26px] border thin-line p-4">
+                  <div class="system-screen rounded-[22px] border thin-line bg-white">
+                    <div class="flex justify-end px-4 pt-4">
+                      <div class="flex gap-1.5">
+                        <span class="h-2.5 w-2.5 rounded-full bg-[#d9dee5]"></span>
+                        <span class="h-2.5 w-2.5 rounded-full bg-[#d9dee5]"></span>
+                        <span class="h-2.5 w-2.5 rounded-full bg-[#a4b0bf]"></span>
+                      </div>
+                    </div>
+                    <div class="p-4 pt-3">
+                      <div class="aspect-[1440/1024] overflow-auto rounded-[20px] border border-[#e5eaf0] bg-[#eef2f6]">
+                        <img
+                          src="assets/images/projects/dingdong/overview-home.png"
+                          alt="叮咚买菜履约中后台项目预览图"
+                          class="preview-image"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card soft-card rounded-[30px] border thin-line p-6">
+            <div class="project-main">
+              <div class="project-left">
+                <div class="project-left-top">
+                  <div class="flex flex-wrap items-start gap-4">
+                    <div>
+                      <p class="text-base font-semibold tracking-[0.02em] text-[#4e5b6b]">理想汽车</p>
+                      <h3 class="mt-2 text-[1.75rem] font-semibold leading-[1.22] text-[#171c23]">试驾转单模块设计</h3>
+                      <p class="mt-3 text-[14px] font-medium leading-7 text-[#6a7481]">CRM 系统产品实习生｜2025.06 - 2025.08</p>
+                    </div>
+                  </div>
+                  <p class="mt-4 max-w-xl text-sm leading-7 text-[#5a6270]">围绕高意向客户识别、销售跟进优先级与转化分析，优化试驾后 7 天转化闭环。</p>
+                  <p class="mt-3 text-[14px] font-medium leading-7 text-[#6a7481]">聚焦试驾反馈结构化、客户分层与转化分析三个核心环节。</p>
+                </div>
+                <div class="project-left-bottom">
+                  <div class="project-metrics">
+                    <div class="rounded-[22px] bg-[#fbf8f3] p-5">
+                      <p class="text-xs tracking-[0.16em] text-[#8590a0]">问题拆解</p>
+                      <p class="mt-4 text-sm leading-7 text-[#2d3641]">定位试驾后转单核心断点</p>
+                    </div>
+                    <div class="rounded-[22px] bg-[#fbf8f3] p-5">
+                      <p class="text-xs tracking-[0.16em] text-[#8590a0]">参与内容</p>
+                      <p class="mt-4 text-sm leading-7 text-[#2d3641]">参与页面与规则方案设计</p>
+                    </div>
+                  </div>
+                  <div class="project-action">
+                    <a href="project-li-auto.html" class="detail-button inline-flex items-center rounded-full border thin-line-strong bg-white/85 px-5 py-2.5 text-sm font-medium text-[#36404c]">查看详情</a>
+                  </div>
+                </div>
+              </div>
+              <div class="project-right">
+                <div class="project-preview-frame system-preview rounded-[26px] border thin-line p-4">
+                  <div class="system-screen rounded-[22px] border thin-line bg-white">
+                    <div class="flex justify-end px-4 pt-4">
+                      <div class="flex gap-1.5">
+                        <span class="h-2.5 w-2.5 rounded-full bg-[#d9dee5]"></span>
+                        <span class="h-2.5 w-2.5 rounded-full bg-[#d9dee5]"></span>
+                        <span class="h-2.5 w-2.5 rounded-full bg-[#a4b0bf]"></span>
+                      </div>
+                    </div>
+                    <div class="p-4 pt-3">
+                      <div class="aspect-[1440/1024] overflow-auto rounded-[20px] border border-[#e5eaf0] bg-[#eef2f6]">
+                        <img
+                          src="assets/images/projects/li-auto/overview-main.png"
+                          alt="理想汽车 CRM 项目预览图"
+                          class="preview-image"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="about" class="reveal-section mx-auto max-w-6xl px-6 py-20 lg:px-8">
+        <div>
+          <p class="text-sm font-medium tracking-[0.18em] text-[#708096]">PERSONAL BACKGROUND</p>
+          <h2 class="serif-title mt-4 text-3xl font-semibold text-[#171c23] sm:text-[2.35rem]">个人背景</h2>
+        </div>
+
+        <div class="mt-6 grid gap-5 lg:grid-cols-3">
+          <article class="reveal-item soft-card rounded-[28px] border thin-line p-6">
+            <p class="text-sm font-medium tracking-[0.16em] text-[#6d7b8f]">教育背景</p>
+            <div class="mt-5 space-y-4 text-sm leading-7 text-[#33404e]">
+              <div class="rounded-[20px] bg-[#fbf8f3] p-4">南京信息工程大学（双一流）｜数据科学</div>
+              <div class="rounded-[20px] bg-[#fbf8f3] p-4">2021.9 - 2026.6</div>
+              <div class="rounded-[20px] bg-[#fbf8f3] p-4">主修课程：机器学习、数据结构与数据库系统、Python、C</div>
+            </div>
+          </article>
+
+          <article class="reveal-item delay-1 soft-card rounded-[28px] border thin-line p-6">
+            <p class="text-sm font-medium tracking-[0.16em] text-[#6d7b8f]">校园经历</p>
+            <div class="mt-5 space-y-4 text-sm leading-7 text-[#33404e]">
+              <div class="rounded-[20px] bg-[#fbf8f3] p-4">2021-2024 学年校级一等奖奖学金</div>
+              <div class="rounded-[20px] bg-[#fbf8f3] p-4">院团委宣传策划部副部长</div>
+              <div class="rounded-[20px] bg-[#fbf8f3] p-4">具备活动策划、内容组织与协同推进经验</div>
+            </div>
+          </article>
+
+          <article class="reveal-item delay-2 soft-card rounded-[28px] border thin-line p-6">
+            <p class="text-sm font-medium tracking-[0.16em] text-[#6d7b8f]">技能工具 / AI 辅助能力</p>
+            <div class="mt-5 space-y-4 text-sm leading-7 text-[#33404e]">
+              <div class="rounded-[20px] bg-[#fbf8f3] p-4">产品设计：PRD、Figma、Axure、Xmind</div>
+              <div class="rounded-[20px] bg-[#fbf8f3] p-4">数据分析：SQL、Python、Excel</div>
+              <div class="rounded-[20px] bg-[#fbf8f3] p-4">AI 工具：Prompt、Coze、ChatGPT、Gemini、千问</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="reveal-section mx-auto max-w-6xl px-6 pb-24 pt-6 lg:px-8">
+        <div class="border-t thin-line pt-8">
+          <div>
+            <p class="text-sm font-medium tracking-[0.18em] text-[#708096]">CONTACT</p>
+            <h2 class="serif-title mt-4 text-2xl font-semibold text-[#171c23] sm:text-[2rem]">联系方式</h2>
+          </div>
+        </div>
+
+        <div class="mt-8 grid gap-4 md:grid-cols-3">
+          <a href="tel:18325450775" class="quiet-card rounded-[24px] border thin-line p-5 transition hover:-translate-y-0.5 hover:border-[#b8c2cf] hover:bg-white/90">
+            <p class="text-xs tracking-[0.16em] text-[#8a93a0]">手机</p>
+            <p class="mt-3 text-base font-medium text-[#1f2831]">18325450775</p>
+          </a>
+          <a href="mailto:alyssasmile2026@hotmail.com" class="quiet-card rounded-[24px] border thin-line p-5 transition hover:-translate-y-0.5 hover:border-[#b8c2cf] hover:bg-white/90">
+            <p class="text-xs tracking-[0.16em] text-[#8a93a0]">邮箱</p>
+            <p class="mt-3 break-all text-base font-medium text-[#1f2831]">alyssasmile2026@hotmail.com</p>
+          </a>
+          <div class="quiet-card rounded-[24px] border thin-line p-5">
+            <p class="text-xs tracking-[0.16em] text-[#8a93a0]">微信</p>
+            <p class="mt-3 text-base font-medium text-[#1f2831]">_AlyssaYang_</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <button
+      id="backToTop"
+      type="button"
+      aria-label="返回顶部"
+      class="pointer-events-none fixed bottom-6 right-6 z-40 translate-y-4 rounded-full border thin-line bg-white/88 px-4 py-3 text-sm text-[#33404d] opacity-0 shadow-[0_14px_34px_rgba(75,83,95,0.12)] transition-all hover:-translate-y-0.5 hover:border-[#5d6d83] hover:text-[#5d6d83]"
+    >
+      返回顶部
+    </button>
+
+    <script>
+      const sections = document.querySelectorAll("main section[id]");
+      const navLinks = document.querySelectorAll(".nav-link");
+      const backToTop = document.getElementById("backToTop");
+      const revealSections = document.querySelectorAll(".reveal-section");
+      const revealItems = document.querySelectorAll(".reveal-item");
+
+      function syncActiveNav() {
+        let currentId = "home";
+        sections.forEach((section) => {
+          const top = section.offsetTop - 140;
+          if (window.scrollY >= top) currentId = section.id;
+        });
+
+        navLinks.forEach((link) => {
+          const active = link.getAttribute("href") === "#" + currentId;
+          link.classList.toggle("active", active);
+        });
+      }
+
+      window.addEventListener("scroll", () => {
+        syncActiveNav();
+        const visible = window.scrollY > 420;
+        backToTop.classList.toggle("opacity-100", visible);
+        backToTop.classList.toggle("translate-y-0", visible);
+        backToTop.classList.toggle("pointer-events-auto", visible);
+        backToTop.classList.toggle("opacity-0", !visible);
+        backToTop.classList.toggle("translate-y-4", !visible);
+        backToTop.classList.toggle("pointer-events-none", !visible);
+      });
+
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+            }
+          });
+        },
+        { threshold: 0.06, rootMargin: "0px 0px -8% 0px" }
+      );
+
+      revealSections.forEach((section) => revealObserver.observe(section));
+      revealItems.forEach((item) => revealObserver.observe(item));
+
+      syncActiveNav();
+    </script>
+  </body>
+</html>
+
