@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>赛维时代｜ERP 系统产品实习生｜PM Portfolio 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html { scroll-behavior: smooth; }
+      body { margin: 0; background: #f6f2eb; color: #1e232b; font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; }
+      .serif-title { font-family: "Iowan Old Style", "Noto Serif SC", "Songti SC", serif; }
+      .glass-nav { background: rgba(248,244,237,.74); backdrop-filter: blur(14px); }
+      .thin-line { border-color: rgba(94,102,113,.12); }
+      .panel { background: rgba(255,255,255,.9); box-shadow: 0 22px 60px rgba(78,84,96,.06); }
+      .soft-panel { background: rgba(251,248,243,.9); }
+      .preview-shell { background: linear-gradient(180deg, rgba(247,248,250,.95), rgba(241,244,247,.88)); box-shadow: inset 0 1px 0 rgba(255,255,255,.92), 0 16px 36px rgba(75,83,95,.06); }
+      .preview-window { background: rgba(255,255,255,.96); box-shadow: 0 18px 40px rgba(75,83,95,.08); }
+      .preview-card { transition: transform .24s ease, box-shadow .24s ease; }
+      .preview-card:hover { transform: translateY(-4px); box-shadow: 0 24px 54px rgba(78,84,96,.08); }
+      .metric-number { color: #243243; letter-spacing: -.04em; }
+      .reveal { opacity: 0; transform: translateY(16px); transition: opacity .52s ease, transform .52s ease; will-change: opacity, transform; }
+      .reveal.is-visible { opacity: 1; transform: translateY(0); }
+      .stagger > * { transition-delay: 0ms; }
+      .stagger.is-visible > :nth-child(1) { transition-delay: 0ms; }
+      .stagger.is-visible > :nth-child(2) { transition-delay: 90ms; }
+      .stagger.is-visible > :nth-child(3) { transition-delay: 120ms; }
+      .stagger.is-visible > :nth-child(4) { transition-delay: 150ms; }
+      .hover-card { transition: box-shadow .24s ease, opacity .24s ease, transform .24s ease; }
+      .hover-card:hover { box-shadow: 0 26px 58px rgba(78,84,96,.08); opacity: .98; }
+      .icon-chip { display: inline-flex; align-items: center; justify-content: center; width: 1.9rem; height: 1.9rem; border-radius: 9999px; border: 1px solid rgba(94,102,113,.12); }
+      .icon-slate { background: rgba(232,239,247,.9); color: #637389; }
+      .icon-sand { background: rgba(244,238,231,.92); color: #7d6f62; }
+      .icon-green { background: rgba(234,242,237,.92); color: #5f7667; }
+      .cap-tag { display: inline-flex; align-items: center; border-radius: 9999px; padding: .3rem .72rem; font-size: .72rem; line-height: .95rem; letter-spacing: .01em; border: 1px solid rgba(94,102,113,.1); }
+      .cap-slate { background: rgba(232,239,247,.88); color: #5c6f88; }
+      .cap-sand { background: rgba(245,239,232,.92); color: #7a6e63; }
+      .cap-green { background: rgba(234,242,237,.9); color: #5d7869; }
+      .cap-cyan { background: rgba(233,242,243,.9); color: #5f7678; }
+      .proto-frame { aspect-ratio: 1440 / 1024; border-radius: 18px; overflow: hidden; background: #f7f9fb; }
+      .proto-scroll { height: 100%; overflow-y: auto; overflow-x: hidden; background: #f7f9fb; }
+      .proto-scroll img, .flow-image img { width: 100%; display: block; }
+      .proto-static { height: 100%; overflow: hidden; background: #f7f9fb; display: flex; align-items: flex-start; justify-content: center; }
+      .proto-static img { width: 100%; height: 100%; object-fit: contain; object-position: top center; display: block; }
+      .proto-panel { position: relative; }
+      .proto-view { position: absolute; inset: 0; opacity: 0; pointer-events: none; transform: translateX(10px); transition: opacity .26s ease, transform .26s ease; }
+      .proto-view.active { opacity: 1; pointer-events: auto; transform: translateX(0); }
+      .proto-control { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border-radius: 9999px; border: 1px solid rgba(94,102,113,.12); background: rgba(255,255,255,.9); color: #5e6a79; transition: transform .2s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease; }
+      .proto-control:hover { transform: translateY(-1px); border-color: rgba(93,109,131,.34); color: #415061; box-shadow: 0 8px 16px rgba(78,84,96,.06); }
+      .flow-image { overflow: auto; border-radius: 18px; background: #f7f9fb; }
+      .subtle-grid::before { content: ""; position: absolute; top: 1rem; left: 1.1rem; right: 1.1rem; height: 1px; background: linear-gradient(90deg, rgba(223,229,236,.1), rgba(223,229,236,.75), rgba(223,229,236,.1)); }
+      .subtle-grid { position: relative; }
+      .hero-sewei-title { white-space: nowrap; letter-spacing: -.03em; font-size: clamp(1.62rem, 2.65vw, 2.52rem); }
+      .key-preview-card { width: 100%; max-width: 42rem; }
+      .back-link { display:inline-flex; align-items:center; border-radius:9999px; border:1px solid rgba(94,102,113,.1); background:rgba(255,255,255,.62); padding:.5rem .95rem; font-size:.9rem; color:#53606f; transition:transform .2s ease,border-color .2s ease,background-color .2s ease,color .2s ease; }
+      .back-link:hover { transform:translateY(-1px); border-color:rgba(93,109,131,.24); background:rgba(255,255,255,.78); color:#425061; }
+    </style>
+  </head>
+  <body>
+    <header class="glass-nav sticky top-0 z-50 border-b border-black/5">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-8">
+        <a href="index.html" class="serif-title text-base font-semibold tracking-[0.08em] text-[#1a1f27] sm:text-[1.05rem]">PM Portfolio 2026</a>
+        <a href="index.html#projects" class="back-link">返回首页</a>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-6xl px-6 py-14 lg:px-8 lg:py-18">
+      <section class="panel reveal rounded-[30px] border thin-line px-6 py-7 sm:px-8 lg:px-10 lg:py-10">
+        <div class="max-w-[58rem]">
+            <p class="text-sm font-medium tracking-[0.18em] text-[#708096]">CASE STUDY · 01</p>
+            <h1 class="serif-title hero-sewei-title mt-5 font-semibold leading-[1.12] text-[#171c23]">赛维时代｜计划协同、补货预警与经营回流闭环迭代</h1>
+            <div class="mt-5 flex flex-wrap gap-2 text-sm text-[#5f6977]">
+              <span class="rounded-full bg-[#edf1f5] px-3 py-1">赛维时代</span>
+              <span class="rounded-full bg-[#edf1f5] px-3 py-1">2025.12 - 2026.03</span>
+              <span class="rounded-full bg-[#edf1f5] px-3 py-1">跨境服饰供应链 ERP</span>
+              <span class="rounded-full bg-[#edf1f5] px-3 py-1">产品实习生</span>
+            </div>
+            <p class="mt-6 max-w-[39rem] text-sm leading-8 text-[#4f5865]">围绕计划协同、补货预警、供应商承接与经营回流四个关键节点，补齐 ERP 中后台判断链路，形成从异常识别到结果回流的供应链闭环。</p>
+            <div class="stagger mt-8 grid gap-4 sm:grid-cols-3">
+              <div class="reveal soft-panel rounded-[22px] border thin-line p-4">
+                <p class="text-xs tracking-[0.16em] text-[#8892a0]">核心结果 01</p>
+                <p class="metric-number mt-3 text-3xl font-semibold">+42%</p>
+                <p class="mt-2 text-sm leading-6 text-[#313944]">候选供应商筛选效率</p>
+              </div>
+              <div class="reveal soft-panel rounded-[22px] border thin-line p-4">
+                <p class="text-xs tracking-[0.16em] text-[#8892a0]">核心结果 02</p>
+                <p class="metric-number mt-3 text-3xl font-semibold">68%</p>
+                <p class="mt-2 text-sm leading-6 text-[#313944]">补货建议采纳率</p>
+              </div>
+              <div class="reveal soft-panel rounded-[22px] border thin-line p-4">
+                <p class="text-xs tracking-[0.16em] text-[#8892a0]">核心结果 03</p>
+                <p class="metric-number mt-3 text-3xl font-semibold">61%</p>
+                <p class="mt-2 text-sm leading-6 text-[#313944]">SKU 异常回流处理闭环率</p>
+              </div>
+            </div>
+        </div>
+      </section>
+
+      <section class="mt-20 grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
+        <div class="reveal">
+          <p class="text-sm font-medium tracking-[0.18em] text-[#708096]">BACKGROUND</p>
+          <h2 class="serif-title mt-4 text-3xl font-semibold text-[#171c23]">项目背景</h2>
+        </div>
+          <div class="space-y-4">
+            <article class="panel hover-card reveal rounded-[28px] border thin-line p-6 sm:p-7">
+            <div class="flex items-center gap-3">
+              <span class="icon-chip icon-slate"><svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7h16M7 4v6m10-6v6M5 20h14a1 1 0 0 0 1-1V9H4v10a1 1 0 0 0 1 1Z" /></svg></span>
+              <p class="text-sm font-medium text-[#5d6d83]">业务背景 / 问题背景</p>
+            </div>
+            <div class="mt-6 space-y-6">
+              <div>
+                <p class="text-[0.95rem] font-semibold text-[#27313d]">业务背景</p>
+                <p class="mt-3 text-sm leading-8 text-[#4f5865]">赛维时代面向跨境服饰供应链，业务覆盖商品开发、采购、生产、库存、履约与多渠道销售。随着多平台、多区域、多品牌并行，中后台对计划透明度、补货判断与经营复盘的要求明显提升。</p>
+              </div>
+              <div>
+                <p class="text-[0.95rem] font-semibold text-[#27313d]">问题背景</p>
+                <p class="mt-3 text-sm leading-8 text-[#4f5865]">原有 ERP 已具备基础交易处理能力，但在跨工厂协同、补货预警规则、供应商绩效沉淀和经营异常回流方面仍存在信息分散、规则不统一、判断滞后的问题。</p>
+              </div>
+            </div>
+          </article>
+          <div class="grid gap-4 md:grid-cols-2">
+            <article class="panel hover-card reveal rounded-[24px] border thin-line p-6">
+              <div class="flex items-center gap-3">
+                <span class="icon-chip icon-green"><svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 5l7 7-7 7" /></svg></span>
+                <p class="text-sm font-medium text-[#5d6d83]">迭代目标</p>
+              </div>
+              <p class="mt-4 text-sm leading-8 text-[#4f5865]">围绕“计划识别—补货判断—供应商承接—经营结果回流”主线，完成一次面向供应链中后台的闭环迭代，前置识别异常并沉淀可执行建议。</p>
+            </article>
+            <article class="panel hover-card reveal rounded-[24px] border thin-line p-6">
+              <div class="flex items-center gap-3">
+                <span class="icon-chip icon-sand"><svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5m0 14h16M8 15l3-4 3 2 4-6" /></svg></span>
+                <p class="text-sm font-medium text-[#5d6d83]">迭代主线</p>
+              </div>
+              <p class="mt-4 text-sm leading-8 text-[#4f5865]">围绕“计划识别—补货判断—供应商承接—经营结果回流”主线，前置识别异常并沉淀可执行建议，逐步把分散处理动作收敛到统一页面体系中。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-20 grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
+        <div class="reveal">
+          <p class="text-sm font-medium tracking-[0.18em] text-[#708096]">KEY ISSUES</p>
+          <h2 class="serif-title mt-4 text-3xl font-semibold text-[#171c23]">核心问题</h2>
+        </div>
+        <div class="stagger grid gap-4 md:grid-cols-2">
+          <article class="panel hover-card reveal flex h-full flex-col rounded-[24px] border thin-line p-5">
+            <div class="flex items-center gap-3"><span class="text-sm font-medium tracking-[0.16em] text-[#8b95a3]">01</span><span class="h-2.5 w-2.5 rounded-full bg-[#dce5f0]"></span></div>
+            <p class="mt-4 text-[1.02rem] font-semibold text-[#263240]">问题 01｜计划协同断层</p>
+            <p class="mt-3 text-sm leading-7 text-[#4f5865]">跨工厂排产与交期协同信息分散，异常识别依赖人工追踪，导致计划确认慢、插单响应慢、交期风险暴露滞后。</p>
+          </article>
+          <article class="panel hover-card reveal flex h-full flex-col rounded-[24px] border thin-line p-5">
+            <div class="flex items-center gap-3"><span class="text-sm font-medium tracking-[0.16em] text-[#8b95a3]">02</span><span class="h-2.5 w-2.5 rounded-full bg-[#dbe8ea]"></span></div>
+            <p class="mt-4 text-[1.02rem] font-semibold text-[#263240]">问题 02｜补货判断不准</p>
+            <p class="mt-3 text-sm leading-7 text-[#4f5865]">原有预警逻辑偏静态，难以结合提前期、运输周期与需求覆盖天数判断真实补货窗口，容易出现断货或高成本加急。</p>
+          </article>
+          <article class="panel hover-card reveal flex h-full flex-col rounded-[24px] border thin-line p-5">
+            <div class="flex items-center gap-3"><span class="text-sm font-medium tracking-[0.16em] text-[#8b95a3]">03</span><span class="h-2.5 w-2.5 rounded-full bg-[#dfeae3]"></span></div>
+            <p class="mt-4 text-[1.02rem] font-semibold text-[#263240]">问题 03｜供应商承接缺少依据</p>
+            <p class="mt-3 text-sm leading-7 text-[#4f5865]">历史履约结果沉淀分散，采购在紧急补单场景下更依赖经验判断，缺少标准化候选承接依据。</p>
+          </article>
+          <article class="panel hover-card reveal flex h-full flex-col rounded-[24px] border thin-line p-5">
+            <div class="flex items-center gap-3"><span class="text-sm font-medium tracking-[0.16em] text-[#8b95a3]">04</span><span class="h-2.5 w-2.5 rounded-full bg-[#eee5d9]"></span></div>
+            <p class="mt-4 text-[1.02rem] font-semibold text-[#263240]">问题 04｜经营结果难回流</p>
+            <p class="mt-3 text-sm leading-7 text-[#4f5865]">经营结果颗粒度偏粗，难以下钻到 SKU 级定位异常来源，导致问题发现和回流偏慢。</p>
+          </article>
+        </div>
+      </section>
+      <section class="mt-20">
+        <div class="reveal max-w-3xl">
+          <p class="text-sm font-medium tracking-[0.18em] text-[#708096]">SYSTEM MAP</p>
+          <h2 class="serif-title mt-4 text-3xl font-semibold text-[#171c23]">方案闭环</h2>
+        </div>
+        <article class="reveal mt-10 rounded-[30px] border thin-line bg-[rgba(255,255,255,0.52)] px-5 py-5 sm:px-6 sm:py-6">
+          <div class="grid gap-6 lg:grid-cols-[0.94fr_1.06fr] lg:items-start">
+            <div>
+              <p class="max-w-2xl text-sm leading-8 text-[#4f5865]">最终原型统一为 4 个主页面，所有详情查看均通过本页右侧抽屉完成，页面之间形成“计划—补货—供应商—经营结果”的闭环。</p>
+              <div class="stagger mt-8 space-y-4">
+                <article class="reveal border-l-2 border-[#b8c7da] pl-4">
+                  <p class="text-xs font-medium tracking-[0.18em] text-[#8892a0]">01｜多工厂生产计划协同看板</p>
+                  <p class="mt-2 text-sm leading-7 text-[#4f5865]">统一查看计划状态与异常分布，作为整条链路的风险识别入口。</p>
+                </article>
+                <article class="reveal border-l-2 border-[#b8c8cb] pl-4">
+                  <p class="text-xs font-medium tracking-[0.18em] text-[#8892a0]">02｜补货预警与补货建议工作台</p>
+                  <p class="mt-2 text-sm leading-7 text-[#4f5865]">承接异常对象，结合库存、需求覆盖天数与综合提前期生成补货建议。</p>
+                </article>
+                <article class="reveal border-l-2 border-[#c4cfbe] pl-4">
+                  <p class="text-xs font-medium tracking-[0.18em] text-[#8892a0]">03｜供应商绩效与分层管理页</p>
+                  <p class="mt-2 text-sm leading-7 text-[#4f5865]">基于分层结果、风险状态与履约记录筛选候选承接供应商。</p>
+                </article>
+                <article class="reveal border-l-2 border-[#d4c6b8] pl-4">
+                  <p class="text-xs font-medium tracking-[0.18em] text-[#8892a0]">04｜SKU 级经营损益看板</p>
+                  <p class="mt-2 text-sm leading-7 text-[#4f5865]">按 SKU 维度复盘经营结果，并将异常回流至计划、补货或供应商环节。</p>
+                </article>
+              </div>
+            </div>
+            <div class="panel preview-card rounded-[24px] border thin-line p-4">
+              <div class="preview-shell rounded-[22px] border thin-line p-4">
+                <div class="preview-window rounded-[20px] border thin-line p-4">
+                  <div class="flex items-start justify-between border-b thin-line pb-3">
+                    <p class="text-sm font-medium text-[#233140]">项目流程图</p>
+                    <div class="mt-1 flex gap-1.5"><span class="h-2.5 w-2.5 rounded-full bg-[#d9dee5]"></span><span class="h-2.5 w-2.5 rounded-full bg-[#d9dee5]"></span><span class="h-2.5 w-2.5 rounded-full bg-[#aeb8c5]"></span></div>
+                  </div>
+                  <div class="flow-image mt-4 border thin-line"><img src="assets/images/projects/sewei/flow-overview.png" alt="赛维时代 ERP 项目流程图" /></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="mt-20">
+        <div class="reveal max-w-3xl">
+          <p class="text-sm font-medium tracking-[0.18em] text-[#708096]">KEY PAGES</p>
+          <h2 class="serif-title mt-4 text-3xl font-semibold text-[#171c23]">关键页面展示</h2>
+        </div>
+        <div class="mt-10 space-y-8">
+          <article class="panel reveal rounded-[28px] border thin-line p-5 sm:p-6">
+            <div class="grid gap-6 lg:grid-cols-[0.88fr_1.12fr] lg:items-center">
+              <div>
+                <h3 class="text-[1.35rem] font-semibold text-[#171c23]">关键页面 1｜多工厂生产计划协同看板</h3>
+                <div class="mt-5 space-y-4 text-sm leading-8 text-[#4f5865]">
+                  <p><span class="font-medium text-[#27313d]">解决问题：</span>解决多工厂计划信息分散、跨工厂状态不透明、交期 / 缺料 / 插单异常识别滞后的问题。</p>
+                  <p><span class="font-medium text-[#27313d]">页面作用：</span>统一展示工厂负荷、订单优先级、计划排期、物料齐套状态与异常池，帮助计划员和供应链运营快速识别高风险对象，并触发后续补货判断。</p>
+                  <p><span class="font-medium text-[#27313d]">抽屉作用：</span>在同一链路内补充异常对象的基础信息、排期信息、物料状态与异常摘要，支持标记协同或进入补货判断。</p>
+                </div>
+              </div>
+              <article class="panel preview-card key-preview-card rounded-[24px] border thin-line p-4">
+                <div class="preview-shell rounded-[22px] border thin-line p-4">
+                  <div class="preview-window rounded-[20px] border thin-line p-4">
+                    <div class="flex items-start justify-between border-b thin-line pb-3">
+                      <div class="flex items-center gap-2"><p class="text-sm font-medium text-[#233140]">计划协同原型</p><span class="cap-tag cap-slate" data-role="status">页面态</span></div>
+                      <div class="flex items-center gap-2">
+                        <button class="proto-control" type="button" data-switch="prev" data-target="module-1" aria-label="查看页面态"><svg viewBox="0 0 20 20" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12.5 4.5 7 10l5.5 5.5" /></svg></button>
+                        <button class="proto-control" type="button" data-switch="next" data-target="module-1" aria-label="查看抽屉态"><svg viewBox="0 0 20 20" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7.5 4.5 13 10l-5.5 5.5" /></svg></button>
+                      </div>
+                    </div>
+                    <div class="proto-panel mt-4" data-preview="module-1" data-state="page">
+                      <div class="proto-frame">
+                        <div class="proto-view active"><div class="proto-scroll"><img src="assets/images/projects/sewei/page-1.png" alt="多工厂生产计划协同看板页面原型图" /></div></div>
+                        <div class="proto-view"><div class="proto-static"><img src="assets/images/projects/sewei/drawer-1.png" alt="多工厂生产计划协同看板抽屉原型图" /></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </article>
+
+          <article class="panel reveal rounded-[28px] border thin-line p-5 sm:p-6">
+            <div class="grid gap-6 lg:grid-cols-[1.12fr_0.88fr] lg:items-center">
+              <article class="panel preview-card key-preview-card rounded-[24px] border thin-line p-4">
+                <div class="preview-shell rounded-[22px] border thin-line p-4">
+                  <div class="preview-window rounded-[20px] border thin-line p-4">
+                    <div class="flex items-start justify-between border-b thin-line pb-3">
+                      <div class="flex items-center gap-2"><p class="text-sm font-medium text-[#233140]">补货建议原型</p><span class="cap-tag cap-cyan" data-role="status">页面态</span></div>
+                      <div class="flex items-center gap-2">
+                        <button class="proto-control" type="button" data-switch="prev" data-target="module-2" aria-label="查看页面态"><svg viewBox="0 0 20 20" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12.5 4.5 7 10l5.5 5.5" /></svg></button>
+                        <button class="proto-control" type="button" data-switch="next" data-target="module-2" aria-label="查看抽屉态"><svg viewBox="0 0 20 20" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7.5 4.5 13 10l-5.5 5.5" /></svg></button>
+                      </div>
+                    </div>
+                    <div class="proto-panel mt-4" data-preview="module-2" data-state="page">
+                      <div class="proto-frame">
+                        <div class="proto-view active"><div class="proto-scroll"><img src="assets/images/projects/sewei/page-2.png" alt="补货预警与补货建议工作台页面原型图" /></div></div>
+                        <div class="proto-view"><div class="proto-static"><img src="assets/images/projects/sewei/drawer-2.png" alt="补货预警与补货建议工作台抽屉原型图" /></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <div>
+                <h3 class="text-[1.35rem] font-semibold text-[#171c23]">关键页面 2｜补货预警与补货建议工作台</h3>
+                <div class="mt-5 space-y-4 text-sm leading-8 text-[#4f5865]">
+                  <p><span class="font-medium text-[#27313d]">解决问题：</span>解决原有补货预警偏静态、补货时点判断不准、建议不可执行的问题。</p>
+                  <p><span class="font-medium text-[#27313d]">页面作用：</span>承接页面1识别出的异常对象，按 SKU 维度结合当前库存、在途、需求覆盖天数与综合提前期，输出建议补货量、建议下单日期、运输方案与推荐供应商。</p>
+                  <p><span class="font-medium text-[#27313d]">抽屉作用：</span>集中展示库存与需求、时效参数、建议结果与风险摘要，支撑补货建议确认与后续供应商联动。</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="mt-20">
+        <div class="space-y-8">
+          <article class="panel reveal rounded-[28px] border thin-line p-5 sm:p-6">
+            <div class="grid gap-6 lg:grid-cols-[0.88fr_1.12fr] lg:items-center">
+              <div>
+                <h3 class="text-[1.35rem] font-semibold text-[#171c23]">关键页面 3｜供应商绩效与分层管理页</h3>
+                <div class="mt-5 space-y-4 text-sm leading-8 text-[#4f5865]">
+                  <p><span class="font-medium text-[#27313d]">解决问题：</span>解决采购在补货场景下仍依赖经验判断供应商、历史履约结果难复用的问题。</p>
+                  <p><span class="font-medium text-[#27313d]">页面作用：</span>页面不作为独立 SRM 主数据页，而是补货场景下的承接对象筛选页。通过月度评分、分层结果、风险状态与履约记录，帮助采购筛选候选供应商，并将结果回传当前补货任务。</p>
+                  <p><span class="font-medium text-[#27313d]">抽屉作用：</span>提供只读核验视图，集中查看供应商档案、绩效摘要、履约记录与分层原因说明。</p>
+                </div>
+              </div>
+              <article class="panel preview-card key-preview-card rounded-[24px] border thin-line p-4">
+                <div class="preview-shell rounded-[22px] border thin-line p-4">
+                  <div class="preview-window rounded-[20px] border thin-line p-4">
+                    <div class="flex items-start justify-between border-b thin-line pb-3">
+                      <div class="flex items-center gap-2"><p class="text-sm font-medium text-[#233140]">供应商分层原型</p><span class="cap-tag cap-green" data-role="status">页面态</span></div>
+                      <div class="flex items-center gap-2">
+                        <button class="proto-control" type="button" data-switch="prev" data-target="module-3" aria-label="查看页面态"><svg viewBox="0 0 20 20" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12.5 4.5 7 10l5.5 5.5" /></svg></button>
+                        <button class="proto-control" type="button" data-switch="next" data-target="module-3" aria-label="查看抽屉态"><svg viewBox="0 0 20 20" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7.5 4.5 13 10l-5.5 5.5" /></svg></button>
+                      </div>
+                    </div>
+                    <div class="proto-panel mt-4" data-preview="module-3" data-state="page">
+                      <div class="proto-frame">
+                        <div class="proto-view active"><div class="proto-scroll"><img src="assets/images/projects/sewei/page-3.png" alt="供应商绩效与分层管理页原型图" /></div></div>
+                        <div class="proto-view"><div class="proto-static"><img src="assets/images/projects/sewei/drawer-3.png" alt="供应商绩效与分层管理抽屉原型图" /></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </article>
+
+          <article class="panel reveal rounded-[28px] border thin-line p-5 sm:p-6">
+            <div class="grid gap-6 lg:grid-cols-[1.12fr_0.88fr] lg:items-center">
+              <article class="panel preview-card key-preview-card rounded-[24px] border thin-line p-4">
+                <div class="preview-shell rounded-[22px] border thin-line p-4">
+                  <div class="preview-window rounded-[20px] border thin-line p-4">
+                    <div class="flex items-start justify-between border-b thin-line pb-3">
+                      <div class="flex items-center gap-2"><p class="text-sm font-medium text-[#233140]">经营损益原型</p><span class="cap-tag cap-sand" data-role="status">页面态</span></div>
+                      <div class="flex items-center gap-2">
+                        <button class="proto-control" type="button" data-switch="prev" data-target="module-4" aria-label="查看页面态"><svg viewBox="0 0 20 20" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12.5 4.5 7 10l5.5 5.5" /></svg></button>
+                        <button class="proto-control" type="button" data-switch="next" data-target="module-4" aria-label="查看抽屉态"><svg viewBox="0 0 20 20" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7.5 4.5 13 10l-5.5 5.5" /></svg></button>
+                      </div>
+                    </div>
+                    <div class="proto-panel mt-4" data-preview="module-4" data-state="page">
+                      <div class="proto-frame">
+                        <div class="proto-view active"><div class="proto-scroll"><img src="assets/images/projects/sewei/page-4.png" alt="SKU 级经营损益看板页面原型图" /></div></div>
+                        <div class="proto-view"><div class="proto-static"><img src="assets/images/projects/sewei/drawer-4.png" alt="SKU 级经营损益看板抽屉原型图" /></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <div>
+                <h3 class="text-[1.35rem] font-semibold text-[#171c23]">关键页面 4｜SKU 级经营损益看板</h3>
+                <div class="mt-5 space-y-4 text-sm leading-8 text-[#4f5865]">
+                  <p><span class="font-medium text-[#27313d]">解决问题：</span>解决经营结果停留在粗颗粒度、难以下钻定位具体 SKU 异常来源的问题。</p>
+                  <p><span class="font-medium text-[#27313d]">页面作用：</span>作为结果检验层和异常复盘入口，按 SKU 维度展示收入、成本、利润与异常主因，并支持查看补货记录、供应商记录与计划异常。</p>
+                  <p><span class="font-medium text-[#27313d]">抽屉作用：</span>完成成本拆解、异常主因说明、回流建议与跨模块跳转，将经营问题反向指向计划、补货或供应商环节。</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="mt-20">
+        <div class="reveal max-w-3xl">
+          <p class="text-sm font-medium tracking-[0.18em] text-[#708096]">RULES &amp; DOCUMENTS</p>
+          <h2 class="serif-title mt-4 text-3xl font-semibold text-[#171c23]">需求文档 / 规则设计</h2>
+        </div>
+        <div class="stagger mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <article class="panel hover-card reveal rounded-[24px] border thin-line p-5"><p class="text-xs tracking-[0.18em] text-[#8892a0]">01｜页面流转</p><p class="mt-3 text-sm leading-7 text-[#4f5865]">页面1识别异常后进入页面2；页面2生成补货建议后联动页面3；页面3将候选供应商结果回传页面2；页面4识别经营异常后回流前链路。</p></article>
+          <article class="panel hover-card reveal rounded-[24px] border thin-line p-5"><p class="text-xs tracking-[0.18em] text-[#8892a0]">02｜状态设计</p><p class="mt-3 text-sm leading-7 text-[#4f5865]">覆盖异常状态、建议状态、分层状态与回流状态，支撑跨页面协同与处理结果回写。</p></article>
+          <article class="panel hover-card reveal rounded-[24px] border thin-line p-5"><p class="text-xs tracking-[0.18em] text-[#8892a0]">03｜规则口径</p><p class="mt-3 text-sm leading-7 text-[#4f5865]">补货页补充需求覆盖天数、综合提前期与建议生成逻辑；经营页补充异常识别与回流规则。</p></article>
+          <article class="panel hover-card reveal rounded-[24px] border thin-line p-5"><p class="text-xs tracking-[0.18em] text-[#8892a0]">04｜页面边界</p><p class="mt-3 text-sm leading-7 text-[#4f5865]">页面2不承担正式采购下单，页面3不作为独立 SRM 页，页面4不承担财务核算编辑。</p></article>
+        </div>
+      </section>
+
+      <section class="mt-20 grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
+        <div class="reveal">
+          <p class="text-sm font-medium tracking-[0.18em] text-[#708096]">OUTCOMES</p>
+          <h2 class="serif-title mt-4 text-3xl font-semibold text-[#171c23]">效果验证</h2>
+        </div>
+        <div>
+          <div class="stagger grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            <article class="soft-panel reveal rounded-[22px] border thin-line p-4"><p class="metric-number text-3xl font-semibold">31%</p><p class="mt-2 text-sm leading-6 text-[#313944]">高风险计划异常识别时效提升</p></article>
+            <article class="soft-panel reveal rounded-[22px] border thin-line p-4"><p class="metric-number text-3xl font-semibold">68%</p><p class="mt-2 text-sm leading-6 text-[#313944]">补货建议采纳率</p></article>
+            <article class="soft-panel reveal rounded-[22px] border thin-line p-4"><p class="metric-number text-3xl font-semibold">42%</p><p class="mt-2 text-sm leading-6 text-[#313944]">候选供应商筛选效率提升</p></article>
+            <article class="soft-panel reveal rounded-[22px] border thin-line p-4"><p class="metric-number text-3xl font-semibold">61%</p><p class="mt-2 text-sm leading-6 text-[#313944]">SKU 异常回流处理闭环率</p></article>
+          </div>
+          <div class="reveal mt-6 rounded-[22px] border thin-line bg-white/55 px-5 py-4">
+            <p class="text-sm leading-8 text-[#4f5865]">版本上线后，重点观察了计划异常识别、补货建议采纳、候选供应商筛选与异常回流处理 4 个指标。本次迭代主要改善了中后台在异常识别、建议承接与结果回流上的处理效率，也让原来分散在计划、补货、供应商与经营复盘中的动作被串到同一条链路里。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-20 grid gap-5 lg:grid-cols-2">
+        <article class="panel hover-card reveal rounded-[24px] border thin-line p-5 sm:p-6"><h2 class="serif-title text-[1.5rem] font-semibold text-[#171c23]">我的参与</h2><p class="mt-4 text-sm leading-8 text-[#4f5865]">参与跨境服饰供应链全链路业务痛点梳理，收敛计划协同、补货预警、供应商承接、经营回流四大迭代模块；参与页面1、页面2的核心模块设计与规则梳理；独立搭建供应商绩效与分层管理体系；参与 SKU 级经营损益看板的异常归因与跨模块回流规则设计；全程跟进方案评审、开发协同、测试验收与上线复盘。</p></article>
+        <article class="panel hover-card reveal rounded-[24px] border thin-line p-5 sm:p-6"><h2 class="serif-title text-[1.5rem] font-semibold text-[#171c23]">我的收获</h2><p class="mt-4 text-sm leading-8 text-[#4f5865]">这次迭代让我更明确地理解了 ERP 中后台项目里“规则判断—页面承接—结果回流”的设计关系，也积累了从链路梳理、规则补充到原型校准与项目协同的完整经验。</p></article>
+      </section>
+
+      <p class="reveal mt-12 pb-10 text-center text-sm leading-7 text-[#737d8a]">作品及展示图片均已脱敏，企业内部敏感信息已做打码处理。</p>
+    </main>
+
+    <script>
+      const revealNodes = document.querySelectorAll(".reveal");
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            if (entry.target.classList.contains("stagger")) entry.target.classList.add("is-visible");
+          }
+        });
+      }, { threshold: 0.16, rootMargin: "0px 0px -40px 0px" });
+      revealNodes.forEach((node) => revealObserver.observe(node));
+
+      const previewMap = {
+        "hero-preview": { labels: ["页面态", "抽屉态"] },
+        "module-1": { labels: ["页面态", "抽屉态"] },
+        "module-2": { labels: ["页面态", "抽屉态"] },
+        "module-3": { labels: ["页面态", "抽屉态"] },
+        "module-4": { labels: ["页面态", "抽屉态"] }
+      };
+
+      document.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-switch]");
+        if (!button) return;
+        const targetId = button.getAttribute("data-target");
+        const wrapper = document.querySelector(`[data-preview="${targetId}"]`);
+        if (!wrapper) return;
+        const views = wrapper.querySelectorAll(".proto-view");
+        const status = wrapper.closest(".preview-window").querySelector("[data-role='status']");
+        const currentState = wrapper.getAttribute("data-state") === "page" ? 0 : 1;
+        const nextState = button.getAttribute("data-switch") === "next" ? Math.min(1, currentState + 1) : Math.max(0, currentState - 1);
+        if (currentState === nextState) return;
+        views.forEach((view, index) => view.classList.toggle("active", index === nextState));
+        wrapper.setAttribute("data-state", nextState === 0 ? "page" : "drawer");
+        if (status && previewMap[targetId]) status.textContent = previewMap[targetId].labels[nextState];
+      });
+    </script>
+  </body>
+</html>
