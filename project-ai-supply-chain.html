@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Agent 嵌入式供应链运营异常分析与预补货决策工作台｜PM Portfolio 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html { scroll-behavior: smooth; }
+      body { margin: 0; background: #f6f2eb; color: #1e232b; font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; }
+      .serif-title { font-family: "Iowan Old Style", "Noto Serif SC", "Songti SC", serif; }
+      .glass-nav { background: rgba(248,244,237,.74); backdrop-filter: blur(14px); }
+      .thin-line { border-color: rgba(94,102,113,.12); }
+      .panel { background: rgba(255,255,255,.9); box-shadow: 0 22px 60px rgba(78,84,96,.06); }
+      .soft-panel { background: rgba(251,248,243,.9); }
+      .preview-shell { background: linear-gradient(180deg, rgba(247,248,250,.95), rgba(241,244,247,.88)); box-shadow: inset 0 1px 0 rgba(255,255,255,.92), 0 16px 36px rgba(75,83,95,.06); }
+      .preview-window { background: rgba(255,255,255,.96); box-shadow: 0 18px 40px rgba(75,83,95,.08); }
+      .back-link { display:inline-flex; align-items:center; border-radius:9999px; border:1px solid rgba(94,102,113,.1); background:rgba(255,255,255,.62); padding:.5rem .95rem; font-size:.9rem; color:#53606f; transition:transform .2s ease,border-color .2s ease,background-color .2s ease,color .2s ease; }
+      .back-link:hover { transform:translateY(-1px); border-color:rgba(93,109,131,.24); background:rgba(255,255,255,.78); color:#425061; }
+      .cap-tag { display:inline-flex; align-items:center; border-radius:9999px; padding:.34rem .78rem; font-size:.78rem; line-height:1rem; border:1px solid rgba(94,102,113,.1); background:rgba(232,239,247,.78); color:#5c6f88; }
+      .section-kicker { font-size:.86rem; font-weight:500; letter-spacing:.18em; color:#708096; }
+      .hover-card { transition: box-shadow .24s ease, opacity .24s ease, transform .24s ease; }
+      .hover-card:hover { transform: translateY(-2px); box-shadow: 0 26px 58px rgba(78,84,96,.08); opacity: .98; }
+      .flow-item { position: relative; }
+      .flow-item:not(:last-child)::after { content:""; position:absolute; left:calc(100% + .15rem); top:1.55rem; width:.9rem; height:1px; background:rgba(94,102,113,.22); }
+      .demo-shot { width: 100%; height: 100%; object-fit: contain; object-position: center center; display:block; border-radius: 12px; }
+      details summary::-webkit-details-marker { display:none; }
+      details summary { cursor:pointer; }
+      @media (max-width:1023px) {
+        .flow-item:not(:last-child)::after { left:1.5rem; top:100%; width:1px; height:.9rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="glass-nav sticky top-0 z-50 border-b border-black/5">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-8">
+        <a href="index.html" class="serif-title text-base font-semibold tracking-[0.08em] text-[#1a1f27] sm:text-[1.05rem]">PM Portfolio 2026</a>
+        <a href="index.html#projects" class="back-link">返回首页</a>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-[1120px] px-6 py-14 lg:px-8">
+      <section class="panel rounded-[30px] border thin-line px-6 py-7 sm:px-8 lg:px-10 lg:py-10">
+        <p class="section-kicker">CASE STUDY · AI PRODUCT PRD</p>
+        <h1 class="serif-title mt-5 max-w-[62rem] text-[2rem] font-semibold leading-[1.14] text-[#171c23] sm:text-[2.7rem]">
+          AI Agent 嵌入式供应链运营异常分析与预补货决策工作台
+        </h1>
+        <p class="mt-5 text-lg font-medium leading-8 text-[#2a3038]">面向家电 / 智能硬件制造企业区域渠道供应链运营场景的 B 端智能工作台。</p>
+        <p class="mt-6 max-w-[48rem] text-sm leading-8 text-[#4f5865]">
+          我基于公开销售、缺货、活动、折扣、节假日和天气数据，构建本地 demo mart，并围绕运营总览、异常分诊、单品诊断、预补货建议和周报复盘，完成从产品定位、PRD 拆解、原型设计到前端 Demo 验收的个人 0-1 项目。
+          重点呈现从“AI 辅助解释”到“规则约束下半自动处理”的产品设计升级。
+        </p>
+        <div class="mt-5 flex flex-wrap gap-2">
+          <span class="cap-tag">个人项目</span>
+          <span class="cap-tag">B端产品</span>
+          <span class="cap-tag">AI Agent</span>
+          <span class="cap-tag">供应链运营</span>
+          <span class="cap-tag">PRD</span>
+          <span class="cap-tag">React Demo</span>
+        </div>
+      </section>
+
+      <section id="background" class="mt-16">
+        <p class="section-kicker">01 BACKGROUND</p>
+        <h2 class="serif-title mt-4 text-3xl font-semibold text-[#171c23]">项目背景</h2>
+        <div class="panel mt-7 grid gap-7 rounded-[28px] border thin-line p-6 sm:p-8 lg:grid-cols-[1.25fr_0.75fr]">
+          <div>
+            <h3 class="text-lg font-semibold text-[#27313d]">为什么做这个项目</h3>
+            <div class="mt-6 space-y-6">
+              <div>
+                <p class="text-sm font-semibold text-[#425061]">业务背景</p>
+                <p class="mt-2 text-sm leading-8 text-[#4f5865]">面向家电 / 智能硬件制造企业的区域渠道供应链运营场景，运营人员需要持续关注网点、SKU、库存、缺货、活动、天气等变化。随着网点和 SKU 数量增加，人工识别异常和判断处理优先级的成本会明显上升。</p>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-[#425061]">核心问题</p>
+                <p class="mt-2 text-sm leading-8 text-[#4f5865]">原始数据能够反映销售、缺货、活动、折扣和天气变化，但这些信息需要被组织成运营人员能使用的工作流。项目的重点是把异常识别、风险解释、单品诊断、预补货建议和周报复盘串成一条可操作链路。</p>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-[#425061]">项目目标</p>
+                <p class="mt-2 text-sm leading-8 text-[#4f5865]">设计一个个人 0-1 AI 产品 Demo，用于展示 B 端产品经理如何基于公开数据样本搭建业务场景、拆分页面职责、定义 AI 嵌入位置，并通过 PRD、原型和前端 Demo 呈现完整产品判断。</p>
+              </div>
+            </div>
+          </div>
+          <aside class="soft-panel rounded-[24px] border thin-line p-5">
+            <p class="text-sm font-semibold text-[#27313d]">数据依据</p>
+            <p class="mt-3 text-sm leading-7 text-[#4f5865]">使用 FreshRetailNet-50K 本地样本，结合本地 demo mart 构建运营风险、补货建议、单品诊断与周报复盘等展示数据。</p>
+            <div class="mt-4 divide-y thin-line text-sm leading-6 text-[#39424d]">
+              <div class="py-3">
+                <p class="text-xs tracking-[0.14em] text-[#8892a0]">公开样本</p>
+                <p class="mt-1">FreshRetailNet-50K 本地样本</p>
+              </div>
+              <div class="py-3">
+                <p class="text-xs tracking-[0.14em] text-[#8892a0]">展示层加工</p>
+                <p class="mt-1">宽表处理、名称映射、demo mart</p>
+              </div>
+              <div class="py-3">
+                <p class="text-xs tracking-[0.14em] text-[#8892a0]">页面承接</p>
+                <p class="mt-1">总览、异常中心、单品诊断、预补货、周报复盘</p>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="pain-points" class="mt-16">
+        <p class="section-kicker">02 SCENARIO & PAIN POINTS</p>
+        <h2 class="serif-title mt-4 text-3xl font-semibold text-[#171c23]">需求场景与痛点</h2>
+        <article class="panel mt-7 rounded-[28px] border thin-line p-6 sm:p-7">
+          <p class="text-lg font-semibold text-[#27313d]">核心矛盾：从“看见风险”到“处理建议”之间仍有人工断点</p>
+          <p class="mt-3 max-w-4xl text-sm leading-8 text-[#4f5865]">V1.0 / V1.1 已经能把运营风险、单品证据和补货建议组织到工作台中，但补货建议仍主要依赖运营逐条确认。V2.0 的重点，是在不越过业务边界的前提下，让 AI 参与建议分流、批量处理和人工复核兜底。</p>
+        </article>
+        <div class="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <article class="soft-panel rounded-[22px] border thin-line p-5">
+            <p class="text-xs tracking-[0.16em] text-[#8892a0]">01</p>
+            <p class="mt-3 text-sm font-semibold text-[#27313d]">建议处理成本高</p>
+            <p class="mt-2 text-sm leading-7 text-[#4f5865]">补货建议数量增加后，运营逐条查看、确认、调整和驳回的成本会快速上升。</p>
+          </article>
+          <article class="soft-panel rounded-[22px] border thin-line p-5">
+            <p class="text-xs tracking-[0.16em] text-[#8892a0]">02</p>
+            <p class="mt-3 text-sm font-semibold text-[#27313d]">自动处理边界不清</p>
+            <p class="mt-2 text-sm leading-7 text-[#4f5865]">哪些建议可以批量处理，哪些建议必须人工复核，需要明确的评分、阈值和拦截规则。</p>
+          </article>
+          <article class="soft-panel rounded-[22px] border thin-line p-5">
+            <p class="text-xs tracking-[0.16em] text-[#8892a0]">03</p>
+            <p class="mt-3 text-sm font-semibold text-[#27313d]">高风险建议不能黑箱处理</p>
+            <p class="mt-2 text-sm leading-7 text-[#4f5865]">P0、高风险、低置信度、建议量异常或字段不完整的建议，需要保留人工复核入口。</p>
+          </article>
+          <article class="soft-panel rounded-[22px] border thin-line p-5">
+            <p class="text-xs tracking-[0.16em] text-[#8892a0]">04</p>
+            <p class="mt-3 text-sm font-semibold text-[#27313d]">处理过程需要留痕</p>
+            <p class="mt-2 text-sm leading-7 text-[#4f5865]">AI 自动分流、批量处理、人工调整和驳回都需要记录来源，方便运营负责人复盘自动化效果。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="solution" class="mt-16">
+        <p class="section-kicker">03 PROJECT SOLUTION</p>
+        <h2 class="serif-title mt-4 text-3xl font-semibold text-[#171c23]">方案架构</h2>
+        <p class="mt-5 w-full text-sm leading-8 text-[#4f5865]">我将项目方案拆成页面职责、人机协同和能力边界三层，分别解决“用户在哪里处理问题”“AI 在哪里介入”“哪些事情不能越界”。</p>
+        <div class="preview-shell mt-7 rounded-[30px] border thin-line p-5 sm:p-6">
+          <div class="space-y-5">
+            <div class="grid gap-4 lg:grid-cols-[5rem_1fr] lg:items-start">
+              <p class="text-xs font-medium tracking-[0.18em] text-[#708096]">01 页面职责层</p>
+              <div class="grid gap-2 sm:grid-cols-3 lg:grid-cols-6">
+                <div class="panel rounded-[16px] border thin-line p-3 text-center text-xs leading-5 text-[#39424d]">运营总览</div>
+                <div class="panel rounded-[16px] border thin-line p-3 text-center text-xs leading-5 text-[#39424d]">异常中心</div>
+                <div class="panel rounded-[16px] border thin-line p-3 text-center text-xs leading-5 text-[#39424d]">风险详情</div>
+                <div class="panel rounded-[16px] border thin-line p-3 text-center text-xs leading-5 text-[#39424d]">单品诊断</div>
+                <div class="panel rounded-[16px] border thin-line p-3 text-center text-xs leading-5 text-[#39424d]">预补货建议</div>
+                <div class="panel rounded-[16px] border thin-line p-3 text-center text-xs leading-5 text-[#39424d]">周报复盘</div>
+              </div>
+            </div>
+            <div class="grid gap-4 lg:grid-cols-[5rem_1fr] lg:items-center">
+              <p class="text-xs font-medium tracking-[0.18em] text-[#708096]">02 AI 辅助层</p>
+              <div class="rounded-[20px] border thin-line bg-white/70 px-4 py-4">
+                <div class="flex flex-wrap gap-2">
+                  <span class="cap-tag">AI 今日运营简报</span>
+                  <span class="cap-tag">AI 风险解释</span>
+                  <span class="cap-tag">AI 归因结论</span>
+                  <span class="cap-tag">AI 处理参考</span>
+                  <span class="cap-tag">AI 周报</span>
+                </div>
+                <p class="mt-3 text-sm leading-7 text-[#4f5865]">AI 能力依附于具体业务页面和结构化数据，不单独做聊天入口。每个 AI 模块都服务于当前页面的判断任务。</p>
+              </div>
+            </div>
+            <div class="grid gap-4 lg:grid-cols-[5rem_1fr] lg:items-start">
+              <p class="text-xs font-medium tracking-[0.18em] text-[#708096]">03 人工兜底层</p>
+              <div class="rounded-[20px] border thin-line bg-[#fbf8f3] p-5 text-sm leading-8 text-[#39424d]">
+                确认 / 调整 / 驳回 / 人工复核 / 操作日志 / 能力边界。
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="flow" class="mt-16">
+        <p class="section-kicker">04 PRODUCT FLOW</p>
+        <h2 class="serif-title mt-4 text-3xl font-semibold text-[#171c23]">业务流程与产品链路</h2>
+        <p class="mt-5 max-w-3xl text-sm leading-8 text-[#4f5865]">这条链路从每日风险入口开始，到处理结果沉淀结束，强调从发现风险到复盘沉淀的递进关系。</p>
+        <div class="mt-7 grid gap-4 lg:grid-cols-6">
+          <div class="flow-item panel min-h-[132px] rounded-[20px] border thin-line p-4"><p class="text-xs tracking-[0.16em] text-[#8892a0]">01</p><p class="mt-3 text-[15px] font-semibold text-[#263240]">运营总览</p><p class="mt-2 text-xs leading-6 text-[#5b6572]">查看当日风险压力与处理入口</p></div>
+          <div class="flow-item panel min-h-[132px] rounded-[20px] border thin-line p-4"><p class="text-xs tracking-[0.16em] text-[#8892a0]">02</p><p class="mt-3 text-[15px] font-semibold text-[#263240]">异常中心</p><p class="mt-2 text-xs leading-6 text-[#5b6572]">按处理优先级筛选风险队列</p></div>
+          <div class="flow-item panel min-h-[132px] rounded-[20px] border thin-line p-4"><p class="text-xs tracking-[0.16em] text-[#8892a0]">03</p><p class="mt-3 text-[15px] font-semibold text-[#263240]">风险详情</p><p class="mt-2 text-xs leading-6 text-[#5b6572]">查看风险解释与关键证据</p></div>
+          <div class="flow-item panel min-h-[132px] rounded-[20px] border thin-line p-4"><p class="text-xs tracking-[0.16em] text-[#8892a0]">04</p><p class="mt-3 text-[15px] font-semibold text-[#263240]">单品诊断</p><p class="mt-2 text-xs leading-6 text-[#5b6572]">聚合销量、缺货、库存、活动和天气因素</p></div>
+          <div class="flow-item panel min-h-[132px] rounded-[20px] border thin-line p-4"><p class="text-xs tracking-[0.16em] text-[#8892a0]">05</p><p class="mt-3 text-[15px] font-semibold text-[#263240]">预补货建议</p><p class="mt-2 text-xs leading-6 text-[#5b6572]">确认、调整、驳回或批量处理建议</p></div>
+          <div class="panel min-h-[132px] rounded-[20px] border thin-line p-4"><p class="text-xs tracking-[0.16em] text-[#8892a0]">06</p><p class="mt-3 text-[15px] font-semibold text-[#263240]">周报复盘</p><p class="mt-2 text-xs leading-6 text-[#5b6572]">沉淀本周风险结构和下周关注点</p></div>
+        </div>
+      </section>
+
+      <section id="prototype" class="mt-16">
+        <p class="section-kicker">05 PROTOTYPE</p>
+        <h2 class="serif-title mt-4 text-3xl font-semibold text-[#171c23]">原型展示</h2>
+        <div class="panel mt-7 rounded-[30px] border thin-line p-7 sm:p-8">
+          <div class="grid gap-8 lg:grid-cols-[0.59fr_0.41fr] lg:items-center">
+            <div class="preview-shell rounded-[24px] border thin-line p-3">
+              <div class="preview-window rounded-[20px] border thin-line p-3">
+                <div class="flex justify-end border-b thin-line pb-2.5">
+                  <div class="flex gap-1.5"><span class="h-2.5 w-2.5 rounded-full bg-[#d9dee5]"></span><span class="h-2.5 w-2.5 rounded-full bg-[#d9dee5]"></span><span class="h-2.5 w-2.5 rounded-full bg-[#a4b0bf]"></span></div>
+                </div>
+                <div class="mt-3 flex h-[286px] items-center justify-center overflow-hidden rounded-[14px] border thin-line bg-[#f8fafb] p-3">
+                  <img src="assets/images/projects/ai-supply-chain/overview-home.png" alt="AI 供应链运营工作台 Demo 截图" class="demo-shot" />
+                </div>
+              </div>
+            </div>
+            <a href="https://sting0000.github.io/b-ai-proj/" target="_blank" rel="noopener noreferrer" class="block rounded-[24px] border thin-line bg-[#fbf8f3]/70 p-6 transition hover:-translate-y-0.5 hover:border-[#b8c2cf] hover:bg-white/90">
+              <p class="section-kicker">ONLINE DEMO</p>
+              <h3 class="serif-title mt-4 text-2xl font-semibold text-[#171c23]">页面展示 Demo</h3>
+              <p class="mt-2 text-sm font-medium text-[#6a7481]">查看已部署的 GitHub Pages Demo</p>
+              <p class="mt-4 text-sm leading-7 text-[#4f5865]">查看运营总览、异常中心、单品诊断、预补货建议与周报复盘等核心页面。</p>
+              <span class="mt-6 inline-flex items-center rounded-full bg-[#243243] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#33465c]">打开在线 Demo</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="retrospective" class="mt-16">
+        <p class="section-kicker">06 RETROSPECTIVE</p>
+        <h2 class="serif-title mt-4 text-3xl font-semibold text-[#171c23]">项目复盘</h2>
+        <div class="mt-7 grid gap-4 lg:grid-cols-[1fr_auto_1fr_auto_1fr] lg:items-stretch">
+          <article class="panel rounded-[26px] border thin-line p-6">
+            <p class="text-xs tracking-[0.16em] text-[#8892a0]">V1.0 / V1.1</p>
+            <h3 class="mt-2 text-base font-semibold text-[#27313d]">基础工作台与 Demo 口径修订</h3>
+            <ul class="mt-4 space-y-3 text-sm leading-7 text-[#4f5865]">
+              <li>完成运营总览、异常中心、风险详情、单品诊断、预补货建议和周报复盘。</li>
+              <li>修订页面职责、AI 免责声明、持续观察、队列规则和周报定位。</li>
+              <li>项目从模块罗列调整为可讲述的运营处理链路。</li>
+            </ul>
+          </article>
+          <div class="hidden items-center text-sm font-medium text-[#8892a0] lg:flex">→</div>
+          <article class="panel rounded-[26px] border thin-line p-6 ring-1 ring-[#c7b7ad]/40">
+            <p class="text-xs tracking-[0.16em] text-[#8892a0]">V2.0</p>
+            <h3 class="mt-2 text-base font-semibold text-[#27313d]">AI 半自动处理机制</h3>
+            <ul class="mt-4 space-y-3 text-sm leading-7 text-[#4f5865]">
+              <li>将补货建议从逐条人工确认升级为 AI 自动分流、批量处理和人工复核。</li>
+              <li>增加风险评分、自动处理置信分、处理进度和操作日志。</li>
+              <li>项目从“AI 辅助解释”升级为“规则约束下的半自动处理流程”。</li>
+            </ul>
+          </article>
+          <div class="hidden items-center text-sm font-medium text-[#8892a0] lg:flex">→</div>
+          <article class="rounded-[26px] border thin-line bg-[#fbf8f3] p-6 shadow-[0_10px_24px_rgba(78,84,96,0.025)]">
+            <p class="text-xs tracking-[0.16em] text-[#8892a0]">V3.0 展望</p>
+            <h3 class="mt-2 text-base font-semibold text-[#27313d]">规则配置与评测沉淀</h3>
+            <ul class="mt-4 space-y-3 text-sm leading-7 text-[#4f5865]">
+              <li>补充规则配置与阈值管理。</li>
+              <li>沉淀摘要版本记录、反馈原因和处理记录。</li>
+              <li>后续可探索真实 LLM API 接入、规则配置与效果评估。</li>
+            </ul>
+          </article>
+        </div>
+        <article class="panel mt-5 rounded-[26px] border thin-line p-6">
+          <h3 class="text-base font-semibold text-[#27313d]">经验沉淀</h3>
+          <div class="mt-4 grid gap-3 md:grid-cols-2">
+            <div class="rounded-[18px] bg-[#fbf8f3] p-4"><p class="text-xs tracking-[0.16em] text-[#8892a0]">01</p><p class="mt-2 text-sm font-semibold text-[#27313d]">页面职责先于 AI 能力</p><p class="mt-2 text-sm leading-7 text-[#4f5865]">页面职责不固定，AI 很容易把功能堆成看板。</p></div>
+            <div class="rounded-[18px] bg-[#fbf8f3] p-4"><p class="text-xs tracking-[0.16em] text-[#8892a0]">02</p><p class="mt-2 text-sm font-semibold text-[#27313d]">AI 输出必须绑定业务上下文</p><p class="mt-2 text-sm leading-7 text-[#4f5865]">AI 模块要依附于当前风险、SKU、建议或统计周。</p></div>
+            <div class="rounded-[18px] bg-[#fbf8f3] p-4"><p class="text-xs tracking-[0.16em] text-[#8892a0]">03</p><p class="mt-2 text-sm font-semibold text-[#27313d]">自动化要同时设计规则、兜底和留痕</p><p class="mt-2 text-sm leading-7 text-[#4f5865]">评分、阈值、人工复核和日志需要一起设计。</p></div>
+            <div class="rounded-[18px] bg-[#fbf8f3] p-4"><p class="text-xs tracking-[0.16em] text-[#8892a0]">04</p><p class="mt-2 text-sm font-semibold text-[#27313d]">Codex 提速实现，产品判断仍需人工校对</p><p class="mt-2 text-sm leading-7 text-[#4f5865]">前端实现可以由 AI 协作，但业务口径、状态边界和验收标准需要人工把关。</p></div>
+          </div>
+        </article>
+      </section>
+
+      <section id="boundary" class="mt-16">
+        <article class="rounded-[24px] border thin-line bg-white/70 p-6 sm:p-7">
+          <p class="section-kicker">07 LIMITATION</p>
+          <h2 class="serif-title mt-4 text-3xl font-semibold text-[#171c23]">能力边界与归属声明</h2>
+          <p class="mt-5 text-sm leading-8 text-[#4f5865]">当前 Demo 采用静态 JSON、本地规则和前端状态管理模拟，用于展示产品链路、AI 嵌入位置与人机协同逻辑；不代表真实采购、真实调拨、真实审批、真实库存写回或真实大模型推理。</p>
+          <div class="mt-5 border-t thin-line pt-5 text-sm leading-7 text-[#737d8a]">
+            <p>© 2026 Sting0000. Personal portfolio project. Public display only.</p>
+            <p>完整 PRD、数据处理过程与交互细节仅用于面试展示，不在公开页面开放下载。</p>
+          </div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
