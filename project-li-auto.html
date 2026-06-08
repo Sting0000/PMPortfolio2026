@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>新能源门店试驾转单管理 SaaS 原型｜PM Portfolio 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: #f6f2eb;
+        color: #1e232b;
+        font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+      }
+
+      .serif-title {
+        font-family: "Iowan Old Style", "Noto Serif SC", "Songti SC", serif;
+      }
+
+      .glass-nav {
+        background: rgba(248, 244, 237, 0.74);
+        backdrop-filter: blur(14px);
+      }
+
+      .thin-line {
+        border-color: rgba(94, 102, 113, 0.12);
+      }
+
+      .panel {
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 22px 60px rgba(78, 84, 96, 0.06);
+      }
+
+      .soft-panel {
+        background: rgba(251, 248, 243, 0.9);
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        border-radius: 9999px;
+        border: 1px solid rgba(94, 102, 113, 0.1);
+        background: rgba(255, 255, 255, 0.62);
+        padding: 0.5rem 0.95rem;
+        font-size: 0.9rem;
+        color: #53606f;
+        transition:
+          transform 0.2s ease,
+          border-color 0.2s ease,
+          background-color 0.2s ease,
+          color 0.2s ease;
+      }
+
+      .back-link:hover {
+        transform: translateY(-1px);
+        border-color: rgba(93, 109, 131, 0.24);
+        background: rgba(255, 255, 255, 0.78);
+        color: #425061;
+      }
+
+      .preview-shell {
+        background: linear-gradient(180deg, rgba(247, 248, 250, 0.95), rgba(241, 244, 247, 0.88));
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.92),
+          0 16px 36px rgba(75, 83, 95, 0.06);
+      }
+
+      .preview-window {
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 18px 40px rgba(75, 83, 95, 0.08);
+      }
+
+      .metric-number {
+        color: #243243;
+        letter-spacing: -0.04em;
+      }
+
+      .media-frame {
+        aspect-ratio: 1440 / 1024;
+        overflow: auto;
+        border-radius: 18px;
+        background: #f7f9fb;
+      }
+
+      .media-frame img {
+        width: 100%;
+        display: block;
+      }
+
+      .flow-frame {
+        aspect-ratio: 2676 / 1176;
+        overflow: auto;
+        border-radius: 18px;
+        background: #f7f9fb;
+      }
+
+      .flow-frame img {
+        width: 100%;
+        display: block;
+      }
+
+      .flow-lite {
+        background: rgba(247, 242, 234, 0.82);
+        border: 1px solid rgba(191, 181, 167, 0.22);
+        box-shadow: none;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 0.56s ease,
+          transform 0.56s ease;
+        will-change: opacity, transform;
+      }
+
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .stagger > * {
+        transition-delay: 0ms;
+      }
+
+      .stagger.is-visible > :nth-child(1) {
+        transition-delay: 0ms;
+      }
+
+      .stagger.is-visible > :nth-child(2) {
+        transition-delay: 90ms;
+      }
+
+      .stagger.is-visible > :nth-child(3) {
+        transition-delay: 120ms;
+      }
+
+      .stagger.is-visible > :nth-child(4) {
+        transition-delay: 120ms;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="glass-nav sticky top-0 z-50 border-b border-black/5">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-8">
+        <a href="index.html" class="serif-title text-base font-semibold tracking-[0.08em] text-[#1a1f27] sm:text-[1.05rem]">PM Portfolio 2026</a>
+        <a
+          href="index.html#projects"
+          class="back-link"
+        >
+          返回首页
+        </a>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-6xl px-6 py-14 lg:px-8 lg:py-18">
+      <section class="panel reveal rounded-[30px] border thin-line px-6 py-7 sm:px-8 lg:px-10 lg:py-10">
+        <div class="max-w-4xl">
+          <p class="text-sm font-medium tracking-[0.18em] text-[#708096]">CASE STUDY · 03</p>
+          <h1 class="serif-title mt-5 text-[2.1rem] font-semibold leading-[1.12] text-[#171c23] sm:text-[2.65rem]">
+            新能源门店试驾转单管理 SaaS 原型
+          </h1>
+
+          <div class="mt-5 flex flex-wrap gap-2 text-sm text-[#5f6977]">
+            <span class="rounded-full bg-[#edf1f5] px-3 py-1">创新创业课程项目</span>
+            <span class="rounded-full bg-[#edf1f5] px-3 py-1">2024.03 - 2024.06</span>
+            <span class="rounded-full bg-[#edf1f5] px-3 py-1">轻量 CRM / SaaS 原型</span>
+            <span class="rounded-full bg-[#edf1f5] px-3 py-1">门店销售转化</span>
+          </div>
+
+          <p class="mt-6 max-w-[38rem] text-sm leading-8 text-[#4f5865]">
+            本项目来源于大学创新创业课程实践，面向新能源汽车线下门店销售团队，聚焦“试驾完成后—下定前”这一段高意向客户转化链路，设计轻量 CRM / SaaS 原型。项目通过试驾反馈结构化、客户优先级分层、销售任务承接、阻碍点催化和转化过程看板，帮助销售更高效跟进高意向客户，帮助门店负责人识别试驾后转单流失原因。
+          </p>
+
+          <div class="stagger mt-8 grid gap-4 sm:grid-cols-3">
+            <div class="reveal soft-panel rounded-[22px] border thin-line p-4">
+              <p class="text-xs tracking-[0.14em] text-[#8892a0]">概览 01</p>
+              <p class="mt-3 text-base font-medium text-[#243243]">产品定位</p>
+              <p class="mt-2 text-sm leading-6 text-[#313944]">
+                面向新能源门店销售团队的轻量 CRM / SaaS 原型，定位为课程实践方案。
+              </p>
+            </div>
+            <div class="reveal soft-panel rounded-[22px] border thin-line p-4">
+              <p class="text-xs tracking-[0.14em] text-[#8892a0]">概览 02</p>
+              <p class="mt-3 text-base font-medium text-[#243243]">核心链路</p>
+              <p class="mt-2 text-sm leading-6 text-[#313944]">
+                围绕“试驾完成后—下定前”，串联反馈记录、客户分层、任务承接和结果复盘。
+              </p>
+            </div>
+            <div class="reveal soft-panel rounded-[22px] border thin-line p-4">
+              <p class="text-xs tracking-[0.14em] text-[#8892a0]">概览 03</p>
+              <p class="mt-3 text-base font-medium text-[#243243]">我的职责</p>
+              <p class="mt-2 text-sm leading-6 text-[#313944]">
+                负责调研分析、业务流程拆解、字段设计、P1/P2/P3 分层规则、原型与指标看板方案。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-20 grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
+        <div>
+          <p class="text-sm font-medium tracking-[0.18em] text-[#708096]">BACKGROUND</p>
+          <h2 class="serif-title mt-4 text-3xl font-semibold text-[#171c23]">项目背景</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2">
+          <article class="panel flex h-full flex-col rounded-[24px] border thin-line p-5">
+            <p class="text-sm font-medium text-[#5d6d83]">场景背景</p>
+            <p class="mt-3 text-sm leading-7 text-[#4f5865]">
+              新能源汽车门店中，试驾是高意向动作。相比普通咨询线索，完成试驾的用户已经进入实际购车评估阶段，更接近下定。
+            </p>
+          </article>
+          <article class="panel flex h-full flex-col rounded-[24px] border thin-line p-5">
+            <p class="text-sm font-medium text-[#5d6d83]">转化痛点</p>
+            <p class="mt-3 text-sm leading-7 text-[#4f5865]">
+              试驾完成后，客户是否下定会受到置换价格、金融方案、交付周期、配置选择、家庭决策、竞品对比等因素影响。
+            </p>
+          </article>
+          <article class="panel flex h-full flex-col rounded-[24px] border thin-line p-5">
+            <p class="text-sm font-medium text-[#5d6d83]">流程问题</p>
+            <p class="mt-3 text-sm leading-7 text-[#4f5865]">
+              原始线下流程中，试驾反馈、销售判断、后续动作和转化结果之间没有形成稳定闭环，销售跟进较依赖个人经验。
+            </p>
+          </article>
+          <article class="panel flex h-full flex-col rounded-[24px] border thin-line p-5">
+            <p class="text-sm font-medium text-[#5d6d83]">项目边界</p>
+            <p class="mt-3 text-sm leading-7 text-[#4f5865]">
+              本项目不接入企业 CRM，不使用真实客户数据，不宣称业务结果，重点展示课程实践中的产品调研、方案设计和原型能力。
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="mt-20">
+        <div>
+          <p class="text-sm font-medium tracking-[0.18em] text-[#708096]">KEY ISSUES</p>
+          <h2 class="serif-title mt-4 text-3xl font-semibold text-[#171c23]">核心问题</h2>
+        </div>
+        <div class="mt-8 grid gap-4 md:grid-cols-2">
+          <article class="panel rounded-[24px] border thin-line px-5 py-5">
+            <p class="text-xs tracking-[0.14em] text-[#8892a0]">问题 1</p>
+            <p class="mt-3 text-lg font-medium text-[#263240]">试驾反馈不结构化</p>
+            <p class="mt-3 text-sm leading-7 text-[#4f5865]">
+              试驾后信息容易停留在自由备注里，后续难以用于客户分层、任务生成和管理复盘。
+            </p>
+          </article>
+          <article class="panel rounded-[24px] border thin-line px-5 py-5">
+            <p class="text-xs tracking-[0.14em] text-[#8892a0]">问题 2</p>
+            <p class="mt-3 text-lg font-medium text-[#263240]">高意向客户识别依赖经验</p>
+            <p class="mt-3 text-sm leading-7 text-[#4f5865]">
+              销售通常依靠个人经验判断客户意向，缺少统一的优先级规则，高价值客户可能被普通待办稀释。
+            </p>
+          </article>
+          <article class="panel rounded-[24px] border thin-line px-5 py-5">
+            <p class="text-xs tracking-[0.14em] text-[#8892a0]">问题 3</p>
+            <p class="mt-3 text-lg font-medium text-[#263240]">阻碍点缺少动作承接</p>
+            <p class="mt-3 text-sm leading-7 text-[#4f5865]">
+              置换、金融、交付周期、配置犹豫、家庭决策等下定阻碍点，缺少稳定映射到后续跟进任务的机制。
+            </p>
+          </article>
+          <article class="panel rounded-[24px] border thin-line px-5 py-5">
+            <p class="text-xs tracking-[0.14em] text-[#8892a0]">问题 4</p>
+            <p class="mt-3 text-lg font-medium text-[#263240]">管理侧复盘不清晰</p>
+            <p class="mt-3 text-sm leading-7 text-[#4f5865]">
+              门店负责人能看到试驾量和订单量，但难以判断流失原因是客户质量、销售跟进，还是某类阻碍点未被有效解决。
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="mt-20">
+        <div class="reveal max-w-3xl">
+          <p class="text-sm font-medium tracking-[0.18em] text-[#708096]">SOLUTION OVERVIEW</p>
+          <h2 class="serif-title mt-4 text-3xl font-semibold text-[#171c23]">方案概览</h2>
+        </div>
+
+        <div class="stagger mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+            <article class="panel reveal rounded-[24px] border thin-line p-5">
+              <p class="text-base font-medium text-[#263240]">试驾反馈结构化</p>
+              <p class="mt-3 text-sm leading-7 text-[#4f5865]">
+                将购车时间、金融咨询、置换需求、交付关注、配置犹豫、家庭决策、竞品对比等信息结构化，提升试驾反馈复用价值。
+              </p>
+            </article>
+            <article class="panel reveal rounded-[24px] border thin-line p-5">
+              <p class="text-base font-medium text-[#263240]">客户分层规则</p>
+              <p class="mt-3 text-sm leading-7 text-[#4f5865]">
+                构建 P1/P2/P3 客户分层机制，采用“规则评分初判 + 销售人工校正 + 调整原因沉淀”的方式判断跟进优先级。
+              </p>
+            </article>
+            <article class="panel reveal rounded-[24px] border thin-line p-5">
+              <p class="text-base font-medium text-[#263240]">销售任务工作台</p>
+              <p class="mt-3 text-sm leading-7 text-[#4f5865]">
+                将高优先级客户、超时未回访客户和存在明确阻碍点的客户前置展示，帮助销售聚焦最值得跟进的试驾后客户。
+              </p>
+            </article>
+            <article class="panel reveal rounded-[24px] border thin-line p-5">
+              <p class="text-base font-medium text-[#263240]">阻碍点催化卡片</p>
+              <p class="mt-3 text-sm leading-7 text-[#4f5865]">
+                将置换、金融、交付周期、配置选择、家庭决策等阻碍点映射为可执行任务，避免客户顾虑只停留在备注里。
+              </p>
+            </article>
+            <article class="panel reveal rounded-[24px] border thin-line p-5">
+              <p class="text-base font-medium text-[#263240]">转化过程看板</p>
+              <p class="mt-3 text-sm leading-7 text-[#4f5865]">
+                定义 24 小时回访完成率、7 日下定率、P1 客户转化率、阻碍点任务完成率等指标，支持门店负责人复盘转化流失原因。
+              </p>
+            </article>
+        </div>
+      </section>
+
+      <section class="mt-20">
+        <div class="max-w-3xl">
+          <p class="text-sm font-medium tracking-[0.18em] text-[#708096]">KEY PAGES</p>
+          <h2 class="serif-title mt-4 text-3xl font-semibold text-[#171c23]">关键页面展示</h2>
+        </div>
+
+        <div class="mt-10">
+          <div class="panel rounded-[28px] border thin-line p-5 sm:p-6">
+            <div class="grid gap-5 lg:grid-cols-[0.42fr_0.58fr] lg:items-center">
+              <div class="max-w-[24rem] lg:pr-2">
+                <p class="text-sm font-medium tracking-[0.18em] text-[#708096]">流程总览</p>
+                <h3 class="mt-3 text-[1.35rem] font-semibold text-[#171c23]">关键页面 00｜试驾转单业务流程图</h3>
+                <p class="mt-4 text-sm leading-8 text-[#4f5865]">
+                  梳理从试驾完成、反馈记录、客户分层、销售跟进、阻碍点承接到转化复盘的业务闭环，明确系统在试驾后转单链路中的位置。
+                </p>
+              </div>
+              <div class="panel rounded-[24px] border thin-line p-4">
+                <div class="preview-shell rounded-[22px] border thin-line p-3">
+                  <div class="preview-window rounded-[20px] border thin-line p-3">
+                    <div class="flex items-start justify-between border-b thin-line pb-3">
+                      <p class="text-sm font-medium text-[#233140]">业务流程图</p>
+                      <div class="mt-1 flex gap-1.5">
+                        <span class="h-2.5 w-2.5 rounded-full bg-[#d9dee5]"></span>
+                        <span class="h-2.5 w-2.5 rounded-full bg-[#d9dee5]"></span>
+                        <span class="h-2.5 w-2.5 rounded-full bg-[#aeb8c5]"></span>
+                      </div>
+                    </div>
+                    <div class="flow-frame mt-3 border thin-line">
+                      <img src="assets/images/projects/li-auto/overview-flow.png" alt="试驾转单流程图" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10 space-y-8">
+          <article class="panel rounded-[28px] border thin-line p-5 sm:p-6">
+            <div class="grid gap-6 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
+              <div class="panel rounded-[24px] border thin-line p-4">
+                <div class="preview-shell rounded-[22px] border thin-line p-4">
+                  <div class="preview-window rounded-[20px] border thin-line p-4">
+                    <div class="flex items-start justify-between border-b thin-line pb-3">
+                      <p class="text-sm font-medium text-[#233140]">试驾反馈填写页截图</p>
+                      <div class="mt-1 flex gap-1.5">
+                        <span class="h-2.5 w-2.5 rounded-full bg-[#d9dee5]"></span>
+                        <span class="h-2.5 w-2.5 rounded-full bg-[#d9dee5]"></span>
+                        <span class="h-2.5 w-2.5 rounded-full bg-[#aeb8c5]"></span>
+                      </div>
+                    </div>
+                    <div class="media-frame mt-4 border thin-line">
+                      <img src="assets/images/projects/li-auto/test-drive-management.png" alt="试驾反馈填写页截图" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-[1.35rem] font-semibold text-[#171c23]">关键页面 01｜试驾反馈填写页</h3>
+                <p class="mt-4 text-sm leading-8 text-[#4f5865]">
+                  销售在试驾完成后录入结构化反馈，包括购车阶段、主要异议点、置换需求、金融咨询、交付关注、配置犹豫和下次跟进时间，减少纯文本备注带来的复用困难。
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel rounded-[28px] border thin-line p-5 sm:p-6">
+            <div class="grid gap-6 lg:grid-cols-[0.88fr_1.12fr] lg:items-center">
+              <div>
+                <h3 class="text-[1.35rem] font-semibold text-[#171c23]">关键页面 02｜试驾后客户工作台</h3>
+                <p class="mt-4 text-sm leading-8 text-[#4f5865]">
+                  按 P1/P2/P3 客户优先级展示待跟进客户，突出超时未回访、明确阻碍点和近期购车信号，帮助销售判断“谁应该先跟、为什么先跟”。
+                </p>
+              </div>
+              <div class="panel rounded-[24px] border thin-line p-4">
+                <div class="preview-shell rounded-[22px] border thin-line p-4">
+                  <div class="preview-window rounded-[20px] border thin-line p-4">
+                    <div class="flex items-start justify-between border-b thin-line pb-3">
+                      <p class="text-sm font-medium text-[#233140]">试驾后工作台页面截图</p>
+                      <div class="mt-1 flex gap-1.5">
+                        <span class="h-2.5 w-2.5 rounded-full bg-[#d9dee5]"></span>
+                        <span class="h-2.5 w-2.5 rounded-full bg-[#d9dee5]"></span>
+                        <span class="h-2.5 w-2.5 rounded-full bg-[#aeb8c5]"></span>
+                      </div>
+                    </div>
+                    <div class="media-frame mt-4 border thin-line">
+                      <img src="assets/images/projects/li-auto/workbench.png" alt="试驾后工作台页面截图" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel rounded-[28px] border thin-line p-5 sm:p-6">
+            <div class="grid gap-6 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
+              <div class="panel rounded-[24px] border thin-line p-4">
+                <div class="preview-shell rounded-[22px] border thin-line p-4">
+                  <div class="preview-window rounded-[20px] border thin-line p-4">
+                    <div class="flex items-start justify-between border-b thin-line pb-3">
+                      <p class="text-sm font-medium text-[#233140]">客户详情页面截图</p>
+                      <div class="mt-1 flex gap-1.5">
+                        <span class="h-2.5 w-2.5 rounded-full bg-[#d9dee5]"></span>
+                        <span class="h-2.5 w-2.5 rounded-full bg-[#d9dee5]"></span>
+                        <span class="h-2.5 w-2.5 rounded-full bg-[#aeb8c5]"></span>
+                      </div>
+                    </div>
+                    <div class="media-frame mt-4 border thin-line">
+                      <img src="assets/images/projects/li-auto/customer-basic-info.png" alt="客户详情页面截图" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-[1.35rem] font-semibold text-[#171c23]">关键页面 03｜客户详情页</h3>
+                <p class="mt-4 text-sm leading-8 text-[#4f5865]">
+                  集中展示客户试驾信息、意向评分、阻碍点标签、跟进记录和下一步动作，支持销售结合系统初判与人工经验推进客户。
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel rounded-[28px] border thin-line p-5 sm:p-6">
+            <div class="grid gap-6 lg:grid-cols-[0.88fr_1.12fr] lg:items-center">
+              <div>
+                <h3 class="text-[1.35rem] font-semibold text-[#171c23]">关键页面 04｜阻碍点催化卡片</h3>
+                <p class="mt-4 text-sm leading-8 text-[#4f5865]">
+                  将置换、金融、交付周期、配置选择、家庭决策等下定阻碍点映射为可执行任务，如置换评估、金融试算、配置对比和家庭试驾邀约。
+                </p>
+              </div>
+              <div class="panel rounded-[24px] border thin-line p-4">
+                <div class="preview-shell rounded-[22px] border thin-line p-4">
+                  <div class="preview-window rounded-[20px] border thin-line p-4">
+                    <div class="flex items-start justify-between border-b thin-line pb-3">
+                      <p class="text-sm font-medium text-[#233140]">阻碍点催化卡片截图</p>
+                      <div class="mt-1 flex gap-1.5">
+                        <span class="h-2.5 w-2.5 rounded-full bg-[#d9dee5]"></span>
+                        <span class="h-2.5 w-2.5 rounded-full bg-[#d9dee5]"></span>
+                        <span class="h-2.5 w-2.5 rounded-full bg-[#aeb8c5]"></span>
+                      </div>
+                    </div>
+                    <div class="media-frame mt-4 border thin-line">
+                      <img src="assets/images/projects/li-auto/feedback-form.png" alt="阻碍点催化卡片截图" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel rounded-[24px] border thin-line px-5 py-5 sm:px-6">
+            <div class="grid gap-5 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+              <div>
+                <h3 class="text-[1.2rem] font-semibold text-[#171c23]">关键页面 05｜试驾转单复盘看板</h3>
+                <p class="mt-3 text-sm leading-8 text-[#4f5865]">
+                  面向门店负责人展示试驾后 24 小时回访完成率、7 日下定率、P1 客户转化率、阻碍点分布和销售顾问差异，用于定位转化流失原因。
+                </p>
+              </div>
+              <div class="panel rounded-[22px] border thin-line p-4">
+                <div class="preview-shell rounded-[20px] border thin-line p-4">
+                  <div class="preview-window rounded-[18px] border thin-line p-4">
+                    <div class="flex items-start justify-between border-b thin-line pb-3">
+                      <p class="text-sm font-medium text-[#233140]">试驾转单复盘看板截图</p>
+                      <div class="mt-1 flex gap-1.5">
+                        <span class="h-2.5 w-2.5 rounded-full bg-[#d9dee5]"></span>
+                        <span class="h-2.5 w-2.5 rounded-full bg-[#d9dee5]"></span>
+                        <span class="h-2.5 w-2.5 rounded-full bg-[#aeb8c5]"></span>
+                      </div>
+                    </div>
+                    <div class="media-frame mt-4 border thin-line">
+                      <img src="assets/images/projects/li-auto/dashboard.png" alt="试驾转单复盘看板截图" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="mt-20 grid gap-5 lg:grid-cols-2">
+        <article class="panel reveal rounded-[24px] border thin-line p-5 sm:p-6">
+          <h2 class="serif-title text-[1.5rem] font-semibold text-[#171c23]">我的参与</h2>
+          <p class="mt-4 text-sm leading-8 text-[#4f5865]">
+            我主要负责产品方案设计，包括调研分析、业务链路拆解、字段设计、客户分层规则、页面原型和指标体系设计。项目中，我将试驾后客户跟进问题拆解为“反馈结构化、意向识别、任务承接、结果回流、管理复盘”五个环节，并围绕 P1/P2/P3 客户分层、阻碍点催化任务和转化过程看板完成核心方案设计。
+          </p>
+        </article>
+        <article class="panel reveal rounded-[24px] border thin-line p-5 sm:p-6">
+          <h2 class="serif-title text-[1.5rem] font-semibold text-[#171c23]">我的复盘</h2>
+          <p class="mt-4 text-sm leading-8 text-[#4f5865]">
+            这次项目是我第一次比较完整地接触产品工作：从观察真实业务场景、拆解用户痛点，到设计流程、规则、原型和指标。我意识到产品经理最重要的工作是理解业务如何运转，判断问题是否真实存在，并把模糊需求转化为可落地、可验证的方案。这个项目也让我对 B 端产品产生了更强兴趣，因为它能通过流程优化和数据沉淀真正提升业务效率。后续我希望接触更多真实业务场景，在实践中继续提升自己的业务理解、需求分析和产品设计能力。
+          </p>
+        </article>
+      </section>
+
+      <p class="reveal mt-12 pb-10 text-center text-sm leading-7 text-[#737d8a]">
+        本页面为课程项目公开展示稿，完整调研材料、规则推导与原型细节仅用于面试沟通。
+      </p>
+    </main>
+
+    <script>
+      const revealTargets = document.querySelectorAll(".reveal, .stagger");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.16, rootMargin: "0px 0px -8% 0px" }
+      );
+
+      revealTargets.forEach((item) => observer.observe(item));
+    </script>
+  </body>
+</html>
